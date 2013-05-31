@@ -166,6 +166,18 @@ namespace Dedimax.IpRanges
             return new BigInteger(paddedAddressBytes);
         }
 
+        public T this[IPAddress ipAddress]
+        {
+            get
+            {
+                T value;
+                if (!TryGetValue(ipAddress, out value))
+                    throw new KeyNotFoundException("Could not find IP address within any range");
+
+                return value;
+            }
+        }
+
         public bool Contains(IPAddress ipAddress)
         {
             if (ipAddress == null) throw new ArgumentNullException("ipAddress");

@@ -99,6 +99,7 @@ namespace Dedimax.IpRanges.Tests
 
             Assert.AreEqual(1, group.Regions.Count);
             Assert.AreEqual(1, group.Regions[0].Ranges.Count);
+            Assert.AreSame(group, group.Regions[0].ParentGroup);
             IpRange range = group.Regions[0].Ranges[0];
             Assert.AreEqual("192.168.0.1", range.From.ToString());
             Assert.AreEqual("192.168.0.2", range.To.ToString());
@@ -124,7 +125,8 @@ namespace Dedimax.IpRanges.Tests
         public void parse_resources_and_check_consistency()
         {
             var any = false;
-            var prefix = typeof (IpRangesParser).Namespace;
+            var prefix = typeof(IpRangesParser).Namespace;
+
             foreach (var group in IpRangesParser.ParseFromResources(prefix + ".Resources"))
             {
                 any = true;

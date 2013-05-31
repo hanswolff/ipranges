@@ -9,11 +9,18 @@ namespace Dedimax.IpRanges
         public string Name { get; set; }
         public string Description { get; set; }
 
+        public IpRangesGroup ParentGroup { get; set; }
+
         public List<IpRange> Ranges { get; private set; }
 
         public IpRangesRegion()
         {
             Ranges = new List<IpRange>();
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

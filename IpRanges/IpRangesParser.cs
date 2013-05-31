@@ -82,6 +82,7 @@ namespace Dedimax.IpRanges
                             {
                                 if (group == null) throw new InvalidDataException("Missing appropriate root element");
                                 region = ReadRegionElement(reader);
+                                region.ParentGroup = group;
                                 group.Regions.Add(region);
                                 continue;
                             }

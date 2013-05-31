@@ -14,5 +14,10 @@ namespace Dedimax.IpRanges
         {
             Regions = new List<IpRangesRegion>();
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

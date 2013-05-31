@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
+using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Net;
 
 namespace Dedimax.IpRanges.Tests
@@ -257,6 +259,31 @@ namespace Dedimax.IpRanges.Tests
                 dict.TryGetValue(IPAddress.IPv6Any, out value);
             stopwatch.Stop();
             Assert.Inconclusive("Elapsed in " + stopwatch.ElapsedMilliseconds + "ms, " + count * 1000 / stopwatch.ElapsedMilliseconds);
+        }
+
+        [Test]
+        [Explicit]
+        public void run_example()
+        {
+            // get regions from resource
+            var regions = IpRangesParser.ParseFromResources().SelectMany(x => x.Regions);
+
+            // create regions dictionary
+            var dictionary = new IpRangesDictionary<IpRangesRegion>();
+            foreach (var region in regions)
+                foreach (var range in region.Ranges)
+                    dictionary.Add(range, region);
+
+            var ipAddress = IPAddress.Parse("23.20.123.123");
+
+            // test if IP address is within any region:
+            var foundRegion = dictionary[ipAddress]; // throws KeyNotFoundException if not found
+            Console.WriteLine("IP address '{0}' is in region '{1}'", ipAddress, foundRegion);
+
+            // or better (to avoid KeyNotFoundException):
+            IpRangesRegion value;
+            if (dictionary.TryGetValue(ipAddress, out value))
+                Console.WriteLine("IP address '{0}' is in region '{1}'", ipAddress, foundRegion);
         }
     }
     // ReSharper restore InconsistentNaming
