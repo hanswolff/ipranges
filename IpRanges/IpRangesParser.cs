@@ -12,7 +12,12 @@ namespace Dedimax.IpRanges
         public static IEnumerable<IpRangesGroup> ParseFromResources(string resourcePrefix = null)
         {
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
-                foreach (var resName in assembly.GetManifestResourceNames())
+            {
+                string[] names;
+                try { names = assembly.GetManifestResourceNames(); }
+                catch { continue; }
+
+                foreach (var resName in names)
                 {
                     if (!String.IsNullOrEmpty(resourcePrefix))
                     {
@@ -32,6 +37,7 @@ namespace Dedimax.IpRanges
                     }
                     yield return group;
                 }
+            }
         }
 
         public static IpRangesGroup ParseFromXml(string xml)
