@@ -166,13 +166,15 @@ namespace Dedimax.IpRanges
             if (!String.IsNullOrEmpty(network)) range = IpRange.Parse(network);
             if (!String.IsNullOrEmpty(from))
             {
-                fromIp = IPAddress.Parse(from);
+                if (!IPAddress.TryParse(from, out fromIp))
+                    throw new FormatException(String.Format("An invalid from IP address was specified ('{0}').", from));
                 if (range != null && !fromIp.Equals(range.From))
                     throw new InvalidDataException(String.Format("From IP in range does not match calculated value, data seems to be inconsistent ({0} != {1})", fromIp, range.From));
             }
             if (!String.IsNullOrEmpty(to))
             {
-                toIp = IPAddress.Parse(to);
+                if (!IPAddress.TryParse(to, out toIp))
+                    throw new FormatException(String.Format("An invalid to IP address was specified ('{0}').", to));
                 if (range != null && !toIp.Equals(range.To))
                     throw new InvalidDataException(String.Format("To IP in range does not match calculated value, data seems to be inconsistent ({0} != {1})", toIp, range.To));
             }

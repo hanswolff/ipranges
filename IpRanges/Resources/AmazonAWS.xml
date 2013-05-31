@@ -42,7 +42,7 @@
   <region name="AWS_AsiaPacific_Singapore" description="Asia Pacific (Singapore)">
     <range network="46.51.216.0/21" from="46.51.216.0" to="46.51.223.255" />
     <range network="46.137.192.0/18" from="46.137.192.0" to="46.137.255.255" />
-    <range network="54.251.0.0/16" from="54.251.0.0 – 54.251.255.255" />
+    <range network="54.251.0.0/16" from="54.251.0.0" to="54.251.255.255" />
     <range network="122.248.192.0/18" from="122.248.192.0" to="122.248.255.255" />
     <range network="175.41.128.0/18" from="175.41.128.0" to="175.41.191.255" />
   </region>
