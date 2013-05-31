@@ -1,0 +1,5 @@
+This package provides a lightweight offline classification of IP addresses. 
+It determines if an IP address is within a specific range. Some common IP 
+ranges (Amazon AWS and Windows Azure) are already included in this package.
+
+THERE IS NO GUARANTEE THAT THE PROVIDED IP RANGES ARE CORRECT!

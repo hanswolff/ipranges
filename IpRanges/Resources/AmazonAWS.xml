@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<group name="AmazonAWS">
+  <region name="AWS_US_Virginia" description="US East (Virginia)">
+    <range network="23.20.0.0/14" from="23.20.0.0" to="23.23.255.255" />
+    <range network="50.16.0.0/15" from="50.16.0.0" to="50.17.255.255" />
+    <range network="50.19.0.0/16" from="50.19.0.0" to="50.19.255.255" />
+    <range network="54.234.0.0/15" from="54.234.0.0" to="54.235.255.255" />
+    <range network="54.236.0.0/15" from="54.236.0.0" to="54.237.255.255" />
+    <range network="54.242.0.0/15" from="54.242.0.0" to="54.243.255.255" />
+    <range network="67.202.0.0/18" from="67.202.0.0" to="67.202.63.255" />
+    <range network="72.44.32.0/19" from="72.44.32.0" to="72.44.63.255" />
+    <range network="75.101.128.0/17" from="75.101.128.0" to="75.101.255.255" />
+    <range network="107.20.0.0/14" from="107.20.0.0" to="107.23.255.255" />
+    <range network="174.129.0.0/16" from="174.129.0.0" to="174.129.255.255" />
+    <range network="184.72.64.0/18" from="184.72.64.0" to="184.72.127.255" />
+    <range network="184.72.128.0/17" from="184.72.128.0" to="184.72.255.255" />
+    <range network="184.73.0.0/16" from="184.73.0.0" to="184.73.255.255" />
+    <range network="204.236.192.0/18" from="204.236.192.0" to="204.236.255.255" />
+  </region>
+  <region name="AWS_US_Oregon" description="US West (Oregon)">
+    <range network="50.112.0.0/16" from="50.112.0.0" to="50.112.255.255" />
+    <range network="54.245.0.0/16" from="54.245.0.0" to="54.245.255.255" />
+  </region>
+  <region name="AWS_US_NorthernCalifornia" description="US West (Northern California)">
+    <range network="50.18.0.0/16" from="50.18.0.0" to="50.18.255.255" />
+    <range network="54.241.0.0/16" from="54.241.0.0" to="54.241.255.255" />
+    <range network="184.72.0.0/18" from="184.72.0.0" to="184.72.63.255" />
+    <range network="184.169.128.0/17" from="184.169.128.0" to="184.169.255.255" />
+    <range network="204.236.128.0/18" from="204.236.128.0" to="204.236.191.255" />
+  </region>
+  <region name="AWS_EU_Ireland" description="EU (Ireland)">
+    <range network="46.51.128.0/18" from="46.51.128.0" to="46.51.191.255" />
+    <range network="46.51.192.0/20" from="46.51.192.0" to="46.51.207.255" />
+    <range network="46.137.0.0/17" from="46.137.0.0" to="46.137.127.255" />
+    <range network="46.137.128.0/18" from="46.137.128.0" to="46.137.191.255" />
+    <range network="54.246.0.0/16" from="54.246.0.0" to="54.246.255.255" />
+    <range network="54.247.0.0/16" from="54.247.0.0" to="54.247.255.255" />
+    <range network="79.125.0.0/17" from="79.125.0.0" to="79.125.127.255" />
+    <range network="176.34.64.0/18" from="176.34.64.0" to="176.34.127.255" />
+    <range network="176.34.128.0/17" from="176.34.128.0" to="176.34.255.255" />
+  </region>
+  <region name="AWS_AsiaPacific_Singapore" description="Asia Pacific (Singapore)">
+    <range network="46.51.216.0/21" from="46.51.216.0" to="46.51.223.255" />
+    <range network="46.137.192.0/18" from="46.137.192.0" to="46.137.255.255" />
+    <range network="54.251.0.0/16" from="54.251.0.0 – 54.251.255.255" />
+    <range network="122.248.192.0/18" from="122.248.192.0" to="122.248.255.255" />
+    <range network="175.41.128.0/18" from="175.41.128.0" to="175.41.191.255" />
+  </region>
+  <region name="AWS_AsiaPacific_Tokyo" description="Asia Pacific (Tokyo)">
+    <range network="46.51.224.0/19" from="46.51.224.0" to="46.51.255.255" />
+    <range network="54.248.0.0/15" from="54.248.0.0" to="54.249.255.255" />
+    <range network="103.4.8.0/21" from="103.4.8.0" to="103.4.15.255" />
+    <range network="175.41.192.0/18" from="175.41.192.0" to="175.41.255.255" />
+    <range network="176.32.64.0/19" from="176.32.64.0" to="176.32.95.255" />
+    <range network="176.34.0.0/18" from="176.34.0.0" to="176.34.63.255" />
+  </region>
+  <region name="AWS_AsiaPacific_Sydney" description="Asia Pacific (Sydney)">
+    <range network="54.252.0.0/16" from="54.252.0.0" to="54.252.255.255" />
+  </region>
+  <region name="AWS_SouthAmerica_SaoPaulo" description="South America (Sao Paulo)">
+    <range network="54.232.0.0/16" from="54.232.0.0" to="54.232.255.255" />
+    <range network="177.71.128.0/17" from="177.71.128.0" to="177.71.255.255" />
+  </region>
+</group>
