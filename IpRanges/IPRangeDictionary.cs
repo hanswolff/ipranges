@@ -5,9 +5,9 @@ using System.Net;
 using System.Net.Sockets;
 using System.Numerics;
 
-namespace Dedimax.IpRanges
+namespace IpRanges
 {
-    public class IpRangesDictionary<T>
+    public class IPRangeDictionary<T>
     {
         private readonly SortedList<ulong, SortedList<ulong, T>> _dictIpv4;
         private readonly SortedList<BigInteger, SortedList<BigInteger, T>> _dictIpv6;
@@ -52,24 +52,24 @@ namespace Dedimax.IpRanges
             }
         }
 
-        public IpRangesDictionary()
+        public IPRangeDictionary()
         {
             _dictIpv4 = new SortedList<ulong, SortedList<ulong, T>>();
             _dictIpv6 = new SortedList<BigInteger, SortedList<BigInteger, T>>();
         }
 
-        public IpRangesDictionary(int capacityIpv4, int capacityIpv6)
+        public IPRangeDictionary(int capacityIpv4, int capacityIpv6)
         {
             _dictIpv4 = new SortedList<ulong, SortedList<ulong, T>>(capacityIpv4);
             _dictIpv6 = new SortedList<BigInteger, SortedList<BigInteger, T>>(capacityIpv6);
         }
 
-        public IpRangesDictionary(int capacity)
+        public IPRangeDictionary(int capacity)
             : this(capacity, capacity)
         {
         }
 
-        public void Add(IpRange range, T value)
+        public void Add(IPRange range, T value)
         {
             if (range == null) throw new ArgumentNullException("range");
 
@@ -83,29 +83,29 @@ namespace Dedimax.IpRanges
 
             if (!fromIp.AddressFamily.HasFlag(AddressFamily.InterNetworkV6) && !toIp.AddressFamily.HasFlag(AddressFamily.InterNetworkV6))
             {
-                AddIpv4(fromIp, toIp, value);
+                AddIPv4(fromIp, toIp, value);
                 return;
             }
 
             if (fromIp.AddressFamily.HasFlag(AddressFamily.InterNetworkV6) && toIp.AddressFamily.HasFlag(AddressFamily.InterNetworkV6))
             {
-                AddIpv6(fromIp, toIp, value);
+                AddIPv6(fromIp, toIp, value);
                 return;
             }
 
             throw new ArgumentException("Cannot mix IPv4 and IPv6 range values");
         }
 
-        private void AddIpv4(IPAddress fromIp, IPAddress toIp, T value)
+        private void AddIPv4(IPAddress fromIp, IPAddress toIp, T value)
         {
             if (fromIp == null) throw new ArgumentNullException("fromIp");
             if (toIp == null) throw new ArgumentNullException("toIp");
 
 #pragma warning disable 612,618
             var fromBytes = fromIp.GetAddressBytes();
-            var fromNumber = (ulong)fromBytes[0] << 24 | (ulong)fromBytes[1] << 16 | (ulong)fromBytes[2] << 8 | fromBytes[3];
+            var fromNumber = (uint)IPAddress.NetworkToHostOrder(BitConverter.ToInt32(fromBytes, 0));
             var toBytes = toIp.GetAddressBytes();
-            var toNumber = (ulong)toBytes[0] << 24 | (ulong)toBytes[1] << 16 | (ulong)toBytes[2] << 8 | toBytes[3];
+            var toNumber = (uint)IPAddress.NetworkToHostOrder(BitConverter.ToInt32(toBytes, 0));
 #pragma warning restore 612,618
 
             if (fromNumber > toNumber)
@@ -127,13 +127,13 @@ namespace Dedimax.IpRanges
             _ipv4Keys = null;
         }
 
-        private void AddIpv6(IPAddress fromIp, IPAddress toIp, T value)
+        private void AddIPv6(IPAddress fromIp, IPAddress toIp, T value)
         {
             if (fromIp == null) throw new ArgumentNullException("fromIp");
             if (toIp == null) throw new ArgumentNullException("toIp");
 
-            var fromNumber = BigIntegerFromIpAddress(fromIp);
-            var toNumber = BigIntegerFromIpAddress(toIp);
+            var fromNumber = IPAddressHelper.BigIntegerFromIpAddress(fromIp);
+            var toNumber = IPAddressHelper.BigIntegerFromIpAddress(toIp);
 
             if (fromNumber > toNumber)
             {
@@ -152,18 +152,6 @@ namespace Dedimax.IpRanges
             else subDict[toNumber] = value;
             _count = -1;
             _ipv6Keys = null;
-        }
-
-        private BigInteger BigIntegerFromIpAddress(IPAddress ipAddress)
-        {
-            if (ipAddress == null) throw new ArgumentNullException("ipAddress");
-
-            var addressBytes = ipAddress.GetAddressBytes();
-            Array.Reverse(addressBytes);
-
-            var paddedAddressBytes = new byte[addressBytes.Length + 1];
-            Array.Copy(addressBytes, paddedAddressBytes, addressBytes.Length);
-            return new BigInteger(paddedAddressBytes);
         }
 
         public T this[IPAddress ipAddress]
@@ -201,7 +189,7 @@ namespace Dedimax.IpRanges
             if (ipAddress == null) throw new ArgumentNullException("ipAddress");
 
             var bytes = ipAddress.GetAddressBytes();
-            var number = (ulong)bytes[0] << 24 | (ulong)bytes[1] << 16 | (ulong)bytes[2] << 8 | bytes[3];
+            var number = (uint)IPAddress.NetworkToHostOrder(BitConverter.ToInt32(bytes, 0));
 
             var keys = Ipv4Keys;
             int index = keys.BinarySearch(number);
@@ -232,7 +220,7 @@ namespace Dedimax.IpRanges
         {
             if (ipAddress == null) throw new ArgumentNullException("ipAddress");
 
-            var number = BigIntegerFromIpAddress(ipAddress);
+            var number = IPAddressHelper.BigIntegerFromIpAddress(ipAddress);
 
             var keys = Ipv6Keys;
             int index = keys.BinarySearch(number);

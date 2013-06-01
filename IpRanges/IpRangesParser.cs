@@ -5,11 +5,11 @@ using System.Net;
 using System.Text;
 using System.Xml;
 
-namespace Dedimax.IpRanges
+namespace IpRanges
 {
-    public static class IpRangesParser
+    public static class IPRangesParser
     {
-        public static IEnumerable<IpRangesGroup> ParseFromResources(string resourcePrefix = null)
+        public static IEnumerable<IPRangesGroup> ParseFromResources(string resourcePrefix = null)
         {
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
@@ -26,7 +26,7 @@ namespace Dedimax.IpRanges
 
                     if (!resName.EndsWith(".xml")) continue;
 
-                    IpRangesGroup group;
+                    IPRangesGroup group;
                     try
                     {
                         group = ParseFromXml(assembly.GetManifestResourceStream(resName));
@@ -40,7 +40,7 @@ namespace Dedimax.IpRanges
             }
         }
 
-        public static IpRangesGroup ParseFromXml(string xml)
+        public static IPRangesGroup ParseFromXml(string xml)
         {
             if (xml == null) throw new ArgumentNullException("xml");
 
@@ -49,7 +49,7 @@ namespace Dedimax.IpRanges
                 return ParseFromXml(reader.BaseStream);
         }
 
-        public static IpRangesGroup ParseFromXml(Stream stream)
+        public static IPRangesGroup ParseFromXml(Stream stream)
         {
             if (stream == null) throw new ArgumentNullException("stream");
 
@@ -57,12 +57,12 @@ namespace Dedimax.IpRanges
                 return ParseFromXml(reader);
         }
 
-        public static IpRangesGroup ParseFromXml(XmlTextReader reader)
+        public static IPRangesGroup ParseFromXml(XmlTextReader reader)
         {
             if (reader == null) throw new ArgumentNullException("reader");
 
-            IpRangesGroup group = null;
-            IpRangesRegion region = null;
+            IPRangesGroup group = null;
+            IPRangesRegion region = null;
 
             var level = 0;
             while (reader.Read())
@@ -116,11 +116,11 @@ namespace Dedimax.IpRanges
             return group;
         }
 
-        private static IpRangesGroup ReadGroupElement(XmlReader reader)
+        private static IPRangesGroup ReadGroupElement(XmlReader reader)
         {
             if (reader == null) throw new ArgumentNullException("reader");
 
-            var group = new IpRangesGroup();
+            var group = new IPRangesGroup();
             while (reader.MoveToNextAttribute())
             {
                 var attrName = reader.Name.ToLowerInvariant();
@@ -130,11 +130,11 @@ namespace Dedimax.IpRanges
             return group;
         }
 
-        private static IpRangesRegion ReadRegionElement(XmlReader reader)
+        private static IPRangesRegion ReadRegionElement(XmlReader reader)
         {
             if (reader == null) throw new ArgumentNullException("reader");
 
-            var region = new IpRangesRegion();
+            var region = new IPRangesRegion();
             while (reader.MoveToNextAttribute())
             {
                 var attrName = reader.Name.ToLowerInvariant();
@@ -148,7 +148,7 @@ namespace Dedimax.IpRanges
             return region;
         }
 
-        private static IpRange ReadRangeElement(XmlReader reader)
+        private static IPRange ReadRangeElement(XmlReader reader)
         {
             if (reader == null) throw new ArgumentNullException("reader");
 
@@ -166,11 +166,11 @@ namespace Dedimax.IpRanges
                 }
             }
 
-            IpRange range = null;
+            IPRange range = null;
             IPAddress fromIp = null;
             IPAddress toIp = null;
 
-            if (!String.IsNullOrEmpty(network)) range = IpRange.Parse(network);
+            if (!String.IsNullOrEmpty(network)) range = IPRange.Parse(network);
             if (!String.IsNullOrEmpty(from))
             {
                 if (!IPAddress.TryParse(from, out fromIp))
@@ -190,7 +190,7 @@ namespace Dedimax.IpRanges
             {
                 if (fromIp == null) throw new InvalidDataException("Missing 'from' or 'network' attribute for range");
                 if (toIp == null) throw new InvalidDataException("Missing 'to' or 'network' attribute for range");
-                range = new IpRange(fromIp, toIp);
+                range = new IPRange(fromIp, toIp);
             }
             reader.MoveToContent();
             return range;

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Net;
+using System.Numerics;
 
-namespace Dedimax.IpRanges
+namespace IpRanges
 {
-    public static class IpHelper
+    public static class IPAddressHelper
     {
         public static IPAddress GetBroadcastAddress(IPAddress address, IPAddress subnetMask)
         {
@@ -61,6 +62,19 @@ namespace Dedimax.IpRanges
             result &= (uint) ((((ulong) 0x1 << cidr) - 1) << zeroBits);
             result = (uint)IPAddress.HostToNetworkOrder((int)result);
             return new IPAddress(BitConverter.GetBytes(result));
+        }
+
+        public static BigInteger BigIntegerFromIpAddress(IPAddress ipAddress)
+        {
+            if (ipAddress == null) throw new ArgumentNullException("ipAddress");
+
+            var addressBytes = ipAddress.GetAddressBytes();
+            if (BitConverter.IsLittleEndian)
+                Array.Reverse(addressBytes);
+
+            var paddedAddressBytes = new byte[addressBytes.Length + 1];
+            Array.Copy(addressBytes, paddedAddressBytes, addressBytes.Length);
+            return new BigInteger(paddedAddressBytes);
         }
     }
 }

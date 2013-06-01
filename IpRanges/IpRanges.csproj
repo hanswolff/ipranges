@@ -7,8 +7,8 @@
     <ProjectGuid>{7A1914C6-5171-4405-9E2C-77816A836F5E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dedimax.IpRanges</RootNamespace>
-    <AssemblyName>Dedimax.IpRanges</AssemblyName>
+    <RootNamespace>IpRanges</RootNamespace>
+    <AssemblyName>IpRanges</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -37,12 +37,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IpHelper.cs" />
-    <Compile Include="IpRange.cs" />
-    <Compile Include="IpRangesDictionary.cs" />
-    <Compile Include="IpRangesGroup.cs" />
-    <Compile Include="IpRangesParser.cs" />
-    <Compile Include="IpRangesRegion.cs" />
+    <Compile Include="IPAddressComparer.cs" />
+    <Compile Include="IPAddressHelper.cs" />
+    <Compile Include="IPRange.cs" />
+    <Compile Include="IPRangeDictionary.cs" />
+    <Compile Include="IPRangesGroup.cs" />
+    <Compile Include="IPRangesParser.cs" />
+    <Compile Include="IPRangesRegion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

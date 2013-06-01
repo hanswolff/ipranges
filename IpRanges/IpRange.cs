@@ -1,22 +1,63 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Net;
+using System.Net.Sockets;
+using System.Numerics;
 
-namespace Dedimax.IpRanges
+namespace IpRanges
 {
     [DebuggerDisplay("{From} - {To}")]
-    public class IpRange
+    [Serializable]
+    public class IPRange
     {
         public IPAddress From { get; set; }
         public IPAddress To { get; set; }
 
-        public IpRange(IPAddress from, IPAddress to)
+        public ulong Count
         {
-            From = from;
-            To = to;
+            get
+            {
+                var fromBytes = From.GetAddressBytes();
+                var toBytes = To.GetAddressBytes();
+
+                if (From.AddressFamily != AddressFamily.InterNetwork)
+                    throw new InvalidOperationException("Count only works for IPv4 addresses, use BigCount property for IPv6");
+
+#pragma warning disable 612,618
+                var fromNumber = (uint)IPAddress.NetworkToHostOrder(BitConverter.ToInt32(fromBytes, 0));
+                var toNumber = (uint)IPAddress.NetworkToHostOrder(BitConverter.ToInt32(toBytes, 0));
+#pragma warning restore 612,618
+                return toNumber - fromNumber + 1;
+            }
         }
 
-        private static bool TryParseNetwork(string network, out IpRange range, out Exception exception)
+        public BigInteger BigCount
+        {
+            get
+            {
+                var fromNumber = IPAddressHelper.BigIntegerFromIpAddress(From);
+                var toNumber = IPAddressHelper.BigIntegerFromIpAddress(To);
+                var count = toNumber - fromNumber + 1;
+                if (count < 0) count = -count;
+                return count;
+            }
+        }
+
+        public IPRange(IPAddress from, IPAddress to)
+        {
+            if (IPAddressComparer.Static.Compare(from, to) <= 0)
+            {
+                From = from;
+                To = to;
+            }
+            else
+            {
+                From = to;
+                To = from;
+            }
+        }
+
+        private static bool TryParseNetwork(string network, out IPRange range, out Exception exception)
         {
             exception = null;
             range = null;
@@ -31,7 +72,7 @@ namespace Dedimax.IpRanges
             IPAddress singleAddress;
             if (IPAddress.TryParse(network, out singleAddress))
             {
-                range = new IpRange(singleAddress, singleAddress);
+                range = new IPRange(singleAddress, singleAddress);
                 return true;
             }
 
@@ -56,17 +97,17 @@ namespace Dedimax.IpRanges
                 return false;
             }
 
-            var subnetMask = IpHelper.CreateSubnetMaskIPv4(cidr);
-            var fromIp = IpHelper.GetNetworkAddress(networkIp, subnetMask);
-            var toIp = IpHelper.GetBroadcastAddress(networkIp, subnetMask);
-            range = new IpRange(fromIp, toIp);
+            var subnetMask = IPAddressHelper.CreateSubnetMaskIPv4(cidr);
+            var fromIp = IPAddressHelper.GetNetworkAddress(networkIp, subnetMask);
+            var toIp = IPAddressHelper.GetBroadcastAddress(networkIp, subnetMask);
+            range = new IPRange(fromIp, toIp);
 
             return true;
         }
 
-        public static IpRange Parse(string network)
+        public static IPRange Parse(string network)
         {
-            IpRange range;
+            IPRange range;
             Exception exception;
             if (!TryParseNetwork(network, out range, out exception))
                 throw exception;

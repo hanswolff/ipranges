@@ -4,22 +4,22 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 
-namespace Dedimax.IpRanges.Tests
+namespace IpRanges.Tests
 {
     // ReSharper disable InconsistentNaming
     [TestFixture]
-    public class IpRangesDictionaryTest
+    public class IPRangeDictionaryTest
     {
         [Test]
         public void count_is_zero_for_new_instance()
         {
-            Assert.AreEqual(0, new IpRangesDictionary<object>().Count);
+            Assert.AreEqual(0, new IPRangeDictionary<object>().Count);
         }
 
         [Test]
         public void count_is_one_after_inserting_an_IPv4_range()
         {
-            var dict = new IpRangesDictionary<object>();
+            var dict = new IPRangeDictionary<object>();
             dict.Add(IPAddress.Any, IPAddress.Any, null);
             Assert.AreEqual(1, dict.Count);
         }
@@ -27,7 +27,7 @@ namespace Dedimax.IpRanges.Tests
         [Test]
         public void count_is_one_after_inserting_an_IPv6_range()
         {
-            var dict = new IpRangesDictionary<object>();
+            var dict = new IPRangeDictionary<object>();
             dict.Add(IPAddress.IPv6Any, IPAddress.IPv6Any, null);
             Assert.AreEqual(1, dict.Count);
         }
@@ -35,7 +35,7 @@ namespace Dedimax.IpRanges.Tests
         [Test]
         public void count_is_one_after_inserting_same_IPv4_range_twice()
         {
-            var dict = new IpRangesDictionary<object>();
+            var dict = new IPRangeDictionary<object>();
             dict.Add(IPAddress.Any, IPAddress.Any, null);
             dict.Add(IPAddress.Any, IPAddress.Any, null);
             Assert.AreEqual(1, dict.Count);
@@ -44,7 +44,7 @@ namespace Dedimax.IpRanges.Tests
         [Test]
         public void count_is_one_after_inserting_same_IPv6_range_twice()
         {
-            var dict = new IpRangesDictionary<object>();
+            var dict = new IPRangeDictionary<object>();
             dict.Add(IPAddress.IPv6Any, IPAddress.IPv6Any, null);
             dict.Add(IPAddress.IPv6Any, IPAddress.IPv6Any, null);
             Assert.AreEqual(1, dict.Count);
@@ -53,7 +53,7 @@ namespace Dedimax.IpRanges.Tests
         [Test]
         public void count_is_one_after_inserting_same_IPv4_range_twice_with_inverted_from_and_to_range()
         {
-            var dict = new IpRangesDictionary<object>();
+            var dict = new IPRangeDictionary<object>();
             dict.Add(IPAddress.Parse("192.168.1.255"), IPAddress.Parse("192.168.1.1"), null);
             dict.Add(IPAddress.Parse("192.168.1.1"), IPAddress.Parse("192.168.1.255"), null);
             Assert.AreEqual(1, dict.Count);
@@ -62,7 +62,7 @@ namespace Dedimax.IpRanges.Tests
         [Test]
         public void count_is_one_after_inserting_same_IPv6_range_twice_with_inverted_from_and_to_range()
         {
-            var dict = new IpRangesDictionary<object>();
+            var dict = new IPRangeDictionary<object>();
             dict.Add(IPAddress.Parse("fe80::"), IPAddress.Parse("fe81::"), null);
             dict.Add(IPAddress.Parse("fe81::"), IPAddress.Parse("fe80::"), null);
             Assert.AreEqual(1, dict.Count);
@@ -71,7 +71,7 @@ namespace Dedimax.IpRanges.Tests
         [Test]
         public void count_is_two_after_inserting_two_different_IPv4_ranges()
         {
-            var dict = new IpRangesDictionary<object>();
+            var dict = new IPRangeDictionary<object>();
             dict.Add(IPAddress.Any, IPAddress.Any, null);
             dict.Add(IPAddress.Loopback, IPAddress.Loopback, null);
             Assert.AreEqual(2, dict.Count);
@@ -80,7 +80,7 @@ namespace Dedimax.IpRanges.Tests
         [Test]
         public void count_is_two_after_inserting_two_different_IPv6_ranges()
         {
-            var dict = new IpRangesDictionary<object>();
+            var dict = new IPRangeDictionary<object>();
             dict.Add(IPAddress.IPv6Any, IPAddress.IPv6Any, null);
             dict.Add(IPAddress.IPv6Loopback, IPAddress.IPv6Loopback, null);
             Assert.AreEqual(2, dict.Count);
@@ -89,7 +89,7 @@ namespace Dedimax.IpRanges.Tests
         [Test]
         public void count_is_two_after_inserting_two_different_IPv4_ranges_with_same_from_address()
         {
-            var dict = new IpRangesDictionary<object>();
+            var dict = new IPRangeDictionary<object>();
             dict.Add(IPAddress.Any, IPAddress.Any, null);
             dict.Add(IPAddress.Any, IPAddress.Loopback, null);
             Assert.AreEqual(2, dict.Count);
@@ -98,7 +98,7 @@ namespace Dedimax.IpRanges.Tests
         [Test]
         public void count_is_two_after_inserting_two_different_IPv6_ranges_with_same_from_address()
         {
-            var dict = new IpRangesDictionary<object>();
+            var dict = new IPRangeDictionary<object>();
             dict.Add(IPAddress.IPv6Any, IPAddress.IPv6Any, null);
             dict.Add(IPAddress.IPv6Any, IPAddress.IPv6Loopback, null);
             Assert.AreEqual(2, dict.Count);
@@ -108,13 +108,13 @@ namespace Dedimax.IpRanges.Tests
         [ExpectedException]
         public void add_throws_exception_when_trying_to_add_a_range_with_IPv4_and_IPv6_values()
         {
-            new IpRangesDictionary<object>().Add(IPAddress.Any, IPAddress.IPv6Any, null);
+            new IPRangeDictionary<object>().Add(IPAddress.Any, IPAddress.IPv6Any, null);
         }
 
         [Test]
         public void contains_returns_always_false_for_empty_instance()
         {
-            Assert.AreEqual(false, new IpRangesDictionary<object>().Contains(IPAddress.Any));
+            Assert.AreEqual(false, new IPRangeDictionary<object>().Contains(IPAddress.Any));
         }
 
         [TestCase("0.0.0.0")]
@@ -132,7 +132,7 @@ namespace Dedimax.IpRanges.Tests
         [TestCase("192.168.1.56")]
         public void describe_dictionary_with_many_nonoverlapping_IPv4_ranges_check_contains_ip_that_is_not_in_any_range(string ipAddress)
         {
-            var dict = new IpRangesDictionary<string>();
+            var dict = new IPRangeDictionary<string>();
             dict.Add(IPAddress.Parse("192.168.1.10"), IPAddress.Parse("192.168.1.15"), null);
             dict.Add(IPAddress.Parse("192.168.1.20"), IPAddress.Parse("192.168.1.25"), null);
             dict.Add(IPAddress.Parse("192.168.1.30"), IPAddress.Parse("192.168.1.35"), null);
@@ -159,7 +159,7 @@ namespace Dedimax.IpRanges.Tests
         [TestCase("192.168.1.55", "E")]
         public void describe_dictionary_with_many_nonoverlapping_IPv4_ranges_try_get_value_for_ip_in_range(string ipAddress, string expected)
         {
-            var dict = new IpRangesDictionary<string>();
+            var dict = new IPRangeDictionary<string>();
             dict.Add(IPAddress.Parse("192.168.1.10"), IPAddress.Parse("192.168.1.15"), "A");
             dict.Add(IPAddress.Parse("192.168.1.20"), IPAddress.Parse("192.168.1.25"), "B");
             dict.Add(IPAddress.Parse("192.168.1.30"), IPAddress.Parse("192.168.1.35"), "C");
@@ -186,7 +186,7 @@ namespace Dedimax.IpRanges.Tests
         [TestCase("fe80:0:0:0:0056::1")]
         public void describe_dictionary_with_many_nonoverlapping_IPv6_ranges_check_contains_ip_that_is_not_in_any_range(string ipAddress)
         {
-            var dict = new IpRangesDictionary<string>();
+            var dict = new IPRangeDictionary<string>();
             dict.Add(IPAddress.Parse("fe80:0:0:0:0010::1"), IPAddress.Parse("fe80:0:0:0:0015::1"), null);
             dict.Add(IPAddress.Parse("fe80:0:0:0:0020::1"), IPAddress.Parse("fe80:0:0:0:0025::1"), null);
             dict.Add(IPAddress.Parse("fe80:0:0:0:0030::1"), IPAddress.Parse("fe80:0:0:0:0035::1"), null);
@@ -213,7 +213,7 @@ namespace Dedimax.IpRanges.Tests
         [TestCase("fe80:0:0:0:0055::1", "E")]
         public void describe_dictionary_with_many_nonoverlapping_IPv6_ranges_try_get_value_for_ip_in_range(string ipAddress, string expected)
         {
-            var dict = new IpRangesDictionary<string>();
+            var dict = new IPRangeDictionary<string>();
             dict.Add(IPAddress.Parse("fe80:0:0:0:0010::1"), IPAddress.Parse("fe80:0:0:0:0015::1"), "A");
             dict.Add(IPAddress.Parse("fe80:0:0:0:0020::1"), IPAddress.Parse("fe80:0:0:0:0025::1"), "B");
             dict.Add(IPAddress.Parse("fe80:0:0:0:0030::1"), IPAddress.Parse("fe80:0:0:0:0035::1"), "C");
@@ -230,7 +230,7 @@ namespace Dedimax.IpRanges.Tests
         public void PerformanceTestIpv4()
         {
             const long count = 1000000;
-            var dict = new IpRangesDictionary<string>();
+            var dict = new IPRangeDictionary<string>();
             for (var i = 1; i <= 100; i++)
                 for (var j = 1; j <= 100; j++)
                     dict.Add(IPAddress.Parse(i + "." + j + ".0.1"), IPAddress.Parse(i + "." + j + ".0.128"), null);
@@ -248,7 +248,7 @@ namespace Dedimax.IpRanges.Tests
         public void PerformanceTestIpv6()
         {
             const long count = 1000000;
-            var dict = new IpRangesDictionary<string>();
+            var dict = new IPRangeDictionary<string>();
             for (var i = 1; i <= 100; i++)
                 for (var j = 1; j <= 100; j++)
                     dict.Add(IPAddress.Parse("fe80:" + i.ToString("X4") + ":" + j.ToString("X4") + ":0:0::1"), IPAddress.Parse("fe80:" + i.ToString("X4") + ":" + j.ToString("X4") + ":0:0::1"), null);
@@ -266,22 +266,22 @@ namespace Dedimax.IpRanges.Tests
         public void run_example()
         {
             // get regions from resource
-            var regions = IpRangesParser.ParseFromResources().SelectMany(x => x.Regions);
+            var regions = IPRangesParser.ParseFromResources().SelectMany(x => x.Regions);
 
             // create regions dictionary
-            var dictionary = new IpRangesDictionary<IpRangesRegion>();
+            var dictionary = new IPRangeDictionary<IPRangesRegion>();
             foreach (var region in regions)
                 foreach (var range in region.Ranges)
                     dictionary.Add(range, region);
 
             var ipAddress = IPAddress.Parse("23.20.123.123");
 
-            // test if IP address is within any region:
+            // test if IP address is within any region
             var foundRegion = dictionary[ipAddress]; // throws KeyNotFoundException if not found
             Console.WriteLine("IP address '{0}' is in region '{1}'", ipAddress, foundRegion);
 
-            // or better (to avoid KeyNotFoundException):
-            IpRangesRegion value;
+            // or better (to avoid KeyNotFoundException)
+            IPRangesRegion value;
             if (dictionary.TryGetValue(ipAddress, out value))
                 Console.WriteLine("IP address '{0}' is in region '{1}'", ipAddress, foundRegion);
         }

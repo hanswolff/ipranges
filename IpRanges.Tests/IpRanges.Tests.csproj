@@ -7,8 +7,8 @@
     <ProjectGuid>{6974592F-882C-4C83-887F-B8F331BF8A4D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dedimax.IpRanges.Tests</RootNamespace>
-    <AssemblyName>Dedimax.IpRanges.Tests</AssemblyName>
+    <RootNamespace>IpRanges.Tests</RootNamespace>
+    <AssemblyName>IpRanges.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -36,13 +36,15 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IpRangesDictionaryTests.cs" />
-    <Compile Include="IpRangesParserTests.cs" />
-    <Compile Include="IpHelperTests.cs" />
-    <Compile Include="IpRangeTests.cs" />
+    <Compile Include="IPAddressComparerTests.cs" />
+    <Compile Include="IPRangeDictionaryTests.cs" />
+    <Compile Include="IPRangesParserTests.cs" />
+    <Compile Include="IPHelperTests.cs" />
+    <Compile Include="IPRangeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

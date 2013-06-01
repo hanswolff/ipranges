@@ -1,21 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace Dedimax.IpRanges
+namespace IpRanges
 {
     [DebuggerDisplay("Name: '{Name}', Description: '{Description}'")]
-    public class IpRangesRegion
+    public class IPRangesRegion
     {
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public IpRangesGroup ParentGroup { get; set; }
+        public IPRangesGroup ParentGroup { get; set; }
 
-        public List<IpRange> Ranges { get; private set; }
+        public List<IPRange> Ranges { get; private set; }
 
-        public IpRangesRegion()
+        public IPRangesRegion()
         {
-            Ranges = new List<IpRange>();
+            Ranges = new List<IPRange>();
         }
 
         public override string ToString()
