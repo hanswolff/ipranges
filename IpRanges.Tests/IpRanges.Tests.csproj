@@ -43,7 +43,7 @@
     <Compile Include="IPAddressComparerTests.cs" />
     <Compile Include="IPRangeDictionaryTests.cs" />
     <Compile Include="IPRangesParserTests.cs" />
-    <Compile Include="IPHelperTests.cs" />
+    <Compile Include="IPAddressHelperTests.cs" />
     <Compile Include="IPRangeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

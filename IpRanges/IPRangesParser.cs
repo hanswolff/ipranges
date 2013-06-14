@@ -140,7 +140,7 @@ namespace IpRanges
                 var attrName = reader.Name.ToLowerInvariant();
                 switch (attrName)
                 {
-                    case "name": region.Name = reader.Value; break;
+                    case "name": region.Name = reader.Value.Trim(); break;
                     case "description": region.Description = reader.Value; break;
                 }
             }
@@ -160,9 +160,9 @@ namespace IpRanges
                 var attrName = reader.Name.ToLowerInvariant();
                 switch (attrName)
                 {
-                    case "network": network = reader.Value; break;
-                    case "from": from = reader.Value; break;
-                    case "to": to = reader.Value; break;
+                    case "network": network = reader.Value.Trim(); break;
+                    case "from": from = reader.Value.Trim(); break;
+                    case "to": to = reader.Value.Trim(); break;
                 }
             }
 

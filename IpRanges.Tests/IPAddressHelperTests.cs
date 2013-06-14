@@ -4,7 +4,7 @@ using System.Net;
 namespace IpRanges.Tests
 {
     [TestFixture]
-    public class IPHelperTests
+    public class IPAddressHelperTests
     {
         [TestCase("192.168.1.1", "255.255.255.0", "192.168.1.255")]
         [TestCase("192.168.1.1", "255.255.0.0", "192.168.255.255")]
@@ -46,6 +46,18 @@ namespace IpRanges.Tests
         public void CreateSubnetMaskIPv4(byte cidr, string subnetMask)
         {
             Assert.AreEqual(subnetMask, IPAddressHelper.CreateSubnetMaskIPv4(cidr).ToString());
+        }
+
+        [TestCase(0, "::")]
+        [TestCase(1, "8000::")]
+        [TestCase(24, "ffff:ff00::")]
+        [TestCase(25, "ffff:ff80::")]
+        [TestCase(32, "ffff:ffff::")]
+        [TestCase(64, "ffff:ffff:ffff:ffff::")]
+        [TestCase(128, "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff")]
+        public void CreateSubnetMaskIPv6(byte cidr, string subnetMask)
+        {
+            Assert.AreEqual(subnetMask, IPAddressHelper.CreateSubnetMaskIPv6(cidr).ToString());
         }
     }
 }

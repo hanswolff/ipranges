@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- last update: Jun 14, 2013 -->
+<group name="DigitalOcean">
+  <!-- source: http://whois.arin.net/ -->
+  <region name="DigitalOcean_USA" description="New York/San Francisco">
+    <!-- DIGITALOCEAN-1 -->
+    <range network="208.68.36.0/22" from="208.68.36.0" to="208.68.39.255" />
+    <!-- DIGITALOCEAN-2 -->
+    <range network="192.34.56.0/21" from="192.34.56.0" to="192.34.63.255" />
+    <!-- DIGITALOCEAN-3 -->
+    <range network="192.81.208.0/20" from="192.81.208.0" to="192.81.223.255" />
+    <!-- DIGITALOCEAN-4 -->
+    <range network="198.211.96.0/19" from="198.211.96.0" to="198.211.127.255" />
+    <!-- DIGITALOCEAN-5 -->
+    <range network="198.199.64.0/18" from="198.199.64.0" to="198.199.127.255" />
+    <!-- DIGITALOCEAN-6 -->
+    <range network="192.241.128.0/17" from="192.241.128.0" to="192.241.255.255" />
+  </region>
+  <!-- source: https://apps.db.ripe.net/search/ -->
+  <region name="DigitalOcean_Europe" description="Amsterdam">
+    <!-- DIGITALOCEAN-AMS-1 -->
+    <range from="185.14.184.0" to="185.14.186.255" />
+    <!-- DIGITALOCEAN-AMS-2 -->
+    <range from="185.14.187.0" to="185.14.187.255" />
+    <!-- DIGITALOCEAN-AMS-4 -->
+    <range from="82.196.0.0" to="82.196.7.255" />
+    <!-- DIGITALOCEAN-AMS-5 -->
+    <range from="82.196.8.0" to="82.196.15.255" />
+  </region>
+</group>

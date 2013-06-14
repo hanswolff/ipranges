@@ -97,7 +97,7 @@ namespace IpRanges
                 return false;
             }
 
-            var subnetMask = IPAddressHelper.CreateSubnetMaskIPv4(cidr);
+            var subnetMask = networkIp.AddressFamily == AddressFamily.InterNetworkV6 ? IPAddressHelper.CreateSubnetMaskIPv6(cidr) : IPAddressHelper.CreateSubnetMaskIPv4(cidr);
             var fromIp = IPAddressHelper.GetNetworkAddress(networkIp, subnetMask);
             var toIp = IPAddressHelper.GetBroadcastAddress(networkIp, subnetMask);
             range = new IPRange(fromIp, toIp);

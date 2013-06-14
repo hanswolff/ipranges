@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Net;
 using System.Numerics;
 
@@ -54,14 +55,33 @@ namespace IpRanges
 
         public static IPAddress CreateSubnetMaskIPv4(int cidr)
         {
+            const int maskLength = 32;
             if (cidr < 0) throw new ArgumentOutOfRangeException("cidr", cidr, "CIDR network prefix cannot be smaller than 0");
-            if (cidr > 32) throw new ArgumentOutOfRangeException("cidr", cidr, "CIDR network prefix cannot be larger than 32 for IPv4");
+            if (cidr > maskLength) throw new ArgumentOutOfRangeException("cidr", cidr, "CIDR network prefix cannot be larger than 32 for IPv4");
 
-            var zeroBits = 32 - cidr;
+            var zeroBits = maskLength - cidr;
             var result = uint.MaxValue;
             result &= (uint) ((((ulong) 0x1 << cidr) - 1) << zeroBits);
             result = (uint)IPAddress.HostToNetworkOrder((int)result);
             return new IPAddress(BitConverter.GetBytes(result));
+        }
+
+        public static IPAddress CreateSubnetMaskIPv6(int cidr)
+        {
+            const int maskLength = 128;
+            if (cidr < 0) throw new ArgumentOutOfRangeException("cidr", cidr, "CIDR network prefix cannot be smaller than 0");
+            if (cidr > maskLength) throw new ArgumentOutOfRangeException("cidr", cidr, "CIDR network prefix cannot be larger than 128 for IPv6");
+
+            var maskBits = new BitArray(maskLength);
+            for (int i = 0; i < maskLength; i++)
+            {
+                var index = (((maskLength - 1) - i) / 8) * 8 + (i % 8);
+                maskBits.Set(index, i >= (maskLength - cidr));
+            }
+
+            var bMaskData = new byte[maskLength / 8];
+            maskBits.CopyTo(bMaskData, 0);
+            return new IPAddress(bMaskData);
         }
 
         public static BigInteger BigIntegerFromIpAddress(IPAddress ipAddress)
