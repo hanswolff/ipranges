@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- last update: May 27, 2014 -->
+<group name="CloudFlare">
+  <!-- source: https://www.cloudflare.com/ips-->
+  <region name="CloudFlare" description="CloudFlare IPv4">
+    <range network="199.27.128.0/21" from="199.27.128.0" to="199.27.135.255" />
+    <range network="173.245.48.0/20" from="173.245.48.0" to="173.245.63.255" />
+    <range network="103.21.244.0/22" from="103.21.244.0" to="103.21.247.255" />
+    <range network="103.22.200.0/22" from="103.22.200.0" to="103.22.203.255" />
+    <range network="103.31.4.0/22" from="103.31.4.0" to="103.31.7.255" />
+    <range network="141.101.64.0/18" from="141.101.64.0" to="141.101.127.255" />
+    <range network="108.162.192.0/18" from="108.162.192.0" to="108.162.255.255" />
+    <range network="190.93.240.0/20" from="190.93.240.0" to="190.93.255.255" />
+    <range network="188.114.96.0/20" from="188.114.96.0" to="188.114.111.255" />
+    <range network="197.234.240.0/22" from="197.234.240.0" to="197.234.243.255" />
+    <range network="198.41.128.0/17" from="198.41.128.0" to="198.41.255.255" />
+    <range network="162.158.0.0/15" from="162.158.0.0" to="162.159.255.255" />
+    <range network="104.16.0.0/12" from="104.16.0.0" to="104.31.255.255" />
+  </region>
+  <region name="CloudFlare" description="CloudFlare IPv6">
+    <range network="2400:cb00::/32" from="2400:cb00::" to="2400:cb00:ffff:ffff:ffff:ffff:ffff:ffff" />
+    <range network="2606:4700::/32" from="2606:4700::" to="2606:4700:ffff:ffff:ffff:ffff:ffff:ffff" />
+    <range network="2803:f800::/32" from="2803:f800::" to="2803:f800:ffff:ffff:ffff:ffff:ffff:ffff" />
+    <range network="2405:b500::/32" from="2405:b500::" to="2405:b500:ffff:ffff:ffff:ffff:ffff:ffff" />
+    <range network="2405:8100::/32" from="2405:8100::" to="2405:8100:ffff:ffff:ffff:ffff:ffff:ffff" />
+  </region>
+</group>

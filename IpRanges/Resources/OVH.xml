@@ -1,62 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<!-- last update: Jun 14, 2013 -->
+<!-- last update: May 27, 2014 -->
 <group name="OVH">
   <!-- source: https://apps.db.ripe.net/search/ -->
+  <!-- source: http://bgp.he.net/AS16276#_prefixes -->
   <!-- multiple successive ranges condensed to larger single ranges -->
-  <region name="OVH_Europe" description="France">
-    <range from="5.39.64.0" to="5.39.79.255" />
-    <range from="37.59.0.0" to="37.59.63.255" />
-    <range from="37.59.120.0" to="37.59.127.255" />
-    <range from="37.59.172.196" to="37.59.172.199" />
-    <range from="37.59.185.0" to="37.59.185.255" />
-    <range from="46.105.0.0" to="46.105.21.255" />
-    <range from="46.105.32.0" to="46.105.68.255" />
-    <range from="46.105.70.0" to="46.105.127.255" />
-    <range from="46.105.192.0" to="46.105.223.255" />
-    <range from="87.98.128.0" to="87.98.191.255" />
-    <range from="87.98.207.0" to="87.98.207.255" />
-    <range from="87.98.216.0" to="87.98.223.255" />
-    <range from="87.98.251.0" to="87.98.251.255" />
-    <range from="91.121.0.0" to="91.121.215.255" />
-    <range from="91.121.220.0" to="91.121.223.255" />
-    <range from="94.23.0.0" to="94.23.63.255" />
-    <range from="94.23.122.0" to="94.23.122.255" />
-    <range from="94.23.124.0" to="94.23.127.255" />
-    <range from="94.23.192.0" to="94.23.255.255" />
+  <region name="OVH_EU_France" description="France">
+    <range from="5.39.0.0" to="5.39.127.255" />
+    <range from="5.135.0.0" to="5.39.255.255" />
+    <range from="37.59.0.0" to="37.59.255.255" />
+    <range from="46.102.0.0" to="46.102.31.255" />
+    <range from="46.105.0.0" to="46.105.255.255" />
+    <range network="87.98.128.0/17" />
+    <range network="91.121.0.0/16" />
+    <range network="92.222.0.0/16" />
+    <range network="94.23.0.0/16" />
     <range from="109.190.64.0" to="109.190.95.255" />
     <range from="109.190.128.0" to="109.190.159.255" />
     <range from="109.190.160.0" to="109.190.163.255" />
     <range from="109.190.184.0" to="109.190.191.255" />
     <range from="109.190.192.0" to="109.190.255.255" />
-    <range from="176.31.96.0" to="176.31.127.255" />
-    <range from="176.31.160.0" to="176.31.163.255" />
-    <range from="176.31.224.0" to="176.31.255.255" />
-    <range from="178.32.32.0" to="178.32.36.255" />
-    <range from="178.32.38.0" to="178.32.39.255" />
-    <range from="178.32.96.0" to="178.32.127.255" />
-    <range from="178.32.128.0" to="178.32.131.255" />
-    <range from="178.32.132.0" to="178.32.135.255" />
-    <range from="178.32.192.0" to="178.32.193.255" />
-    <range from="178.32.208.0" to="178.32.215.255" />
-    <range from="178.32.242.0" to="178.32.242.255" />
-    <range from="178.33.40.0" to="178.33.47.255" />
-    <range from="178.33.56.0" to="178.33.59.255" />
-    <range from="178.33.60.0" to="178.33.63.255" />
-    <range from="178.33.92.32" to="178.33.92.47" />
-    <range from="178.33.96.0" to="178.33.100.255" />
-    <range from="178.33.102.0" to="178.33.104.255" />
-    <range from="178.33.120.0" to="178.33.123.255" />
-    <range from="178.33.125.0" to="178.33.127.0" />
-    <range from="178.33.183.32" to="178.33.183.47" />
-    <range from="178.33.224.0" to="178.33.255.255" />
-    <range from="188.165.8.0" to="188.165.15.255" />
-    <range from="188.165.32.0" to="188.165.63.255" />
-    <range from="188.165.192.0" to="188.165.255.255" />
-    <range from="213.186.32.0" to="213.186.47.255" />
+    <range from="142.4.192.0" to="142.4.223.255" />
+    <range network="176.31.0.0/16" />
+    <range network="178.32.0.0/15" />
+    <range network="188.165.0.0/16" />
+    <range network="213.186.32.0/19" />
     <range from="213.186.50.96" to="213.186.50.111" />
     <range from="213.186.56.0" to="213.186.62.255" />
-    <range from="213.251.128.0" to="213.251.143.255" />
+    <range network="213.251.128.0/18" />
     <range from="213.251.160.0" to="213.251.191.255" />
     <range network="2001:41D0::/40" />
+  </region>
+  <region name="OVH_US_USA" description="USA">
+    <range network="8.7.244.0/24" />
+    <range network="8.18.128.0/24" />
+    <range network="8.18.136.0/21" />
+    <range network="8.18.172.0/24" />
+    <range network="8.20.110.0/24" />
+    <range network="8.21.41.0/24" />
+    <range network="8.24.8.0/21" />
+    <range network="8.26.94.0/24" />
+    <range network="8.29.224.0/24" />
+    <range network="8.30.208.0/21" />
+    <range network="8.33.96.0/21" />
+    <range network="8.33.128.0/21" />
+    <range network="8.33.136.0/24" />
+    <range network="8.33.137.0/24" />
+  </region>
+  <region name="OVH_US_Canada" description="Canada">
+    <range network="192.95.0.0/18" />
+    <range network="192.95.18.0/24" />
+    <range network="192.99.0.0/16" />
+    <range network="198.27.64.0/18" />
+    <range network="198.50.128.0/17" />
+    <range network="198.50.175.0/24" />
+    <range network="198.100.144.0/20" />
+    <range network="198.245.48.0/20" />
   </region>
 </group>

@@ -35,6 +35,10 @@ namespace IpRanges
                     {
                         continue;
                     }
+                    catch (Exception ex)
+                    {
+                        throw new InvalidDataException(String.Format("Resource '{0}' has an invalid entry:\r\n", resName), ex);
+                    }
                     yield return group;
                 }
             }
