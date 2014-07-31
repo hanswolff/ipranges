@@ -1,135 +1,134 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using Xunit;
+using Xunit.Extensions;
 
 namespace IpRanges.Tests
 {
     // ReSharper disable InconsistentNaming
-    [TestFixture]
     public class IPRangeDictionaryTest
     {
-        [Test]
+        [Fact]
         public void count_is_zero_for_new_instance()
         {
-            Assert.AreEqual(0, new IPRangeDictionary<object>().Count);
+            Assert.Equal(0, new IPRangeDictionary<object>().Count);
         }
 
-        [Test]
+        [Fact]
         public void count_is_one_after_inserting_an_IPv4_range()
         {
             var dict = new IPRangeDictionary<object>();
             dict.Add(IPAddress.Any, IPAddress.Any, null);
-            Assert.AreEqual(1, dict.Count);
+            Assert.Equal(1, dict.Count);
         }
 
-        [Test]
+        [Fact]
         public void count_is_one_after_inserting_an_IPv6_range()
         {
             var dict = new IPRangeDictionary<object>();
             dict.Add(IPAddress.IPv6Any, IPAddress.IPv6Any, null);
-            Assert.AreEqual(1, dict.Count);
+            Assert.Equal(1, dict.Count);
         }
 
-        [Test]
+        [Fact]
         public void count_is_one_after_inserting_same_IPv4_range_twice()
         {
             var dict = new IPRangeDictionary<object>();
             dict.Add(IPAddress.Any, IPAddress.Any, null);
             dict.Add(IPAddress.Any, IPAddress.Any, null);
-            Assert.AreEqual(1, dict.Count);
+            Assert.Equal(1, dict.Count);
         }
 
-        [Test]
+        [Fact]
         public void count_is_one_after_inserting_same_IPv6_range_twice()
         {
             var dict = new IPRangeDictionary<object>();
             dict.Add(IPAddress.IPv6Any, IPAddress.IPv6Any, null);
             dict.Add(IPAddress.IPv6Any, IPAddress.IPv6Any, null);
-            Assert.AreEqual(1, dict.Count);
+            Assert.Equal(1, dict.Count);
         }
 
-        [Test]
+        [Fact]
         public void count_is_one_after_inserting_same_IPv4_range_twice_with_inverted_from_and_to_range()
         {
             var dict = new IPRangeDictionary<object>();
             dict.Add(IPAddress.Parse("192.168.1.255"), IPAddress.Parse("192.168.1.1"), null);
             dict.Add(IPAddress.Parse("192.168.1.1"), IPAddress.Parse("192.168.1.255"), null);
-            Assert.AreEqual(1, dict.Count);
+            Assert.Equal(1, dict.Count);
         }
 
-        [Test]
+        [Fact]
         public void count_is_one_after_inserting_same_IPv6_range_twice_with_inverted_from_and_to_range()
         {
             var dict = new IPRangeDictionary<object>();
             dict.Add(IPAddress.Parse("fe80::"), IPAddress.Parse("fe81::"), null);
             dict.Add(IPAddress.Parse("fe81::"), IPAddress.Parse("fe80::"), null);
-            Assert.AreEqual(1, dict.Count);
+            Assert.Equal(1, dict.Count);
         }
 
-        [Test]
+        [Fact]
         public void count_is_two_after_inserting_two_different_IPv4_ranges()
         {
             var dict = new IPRangeDictionary<object>();
             dict.Add(IPAddress.Any, IPAddress.Any, null);
             dict.Add(IPAddress.Loopback, IPAddress.Loopback, null);
-            Assert.AreEqual(2, dict.Count);
+            Assert.Equal(2, dict.Count);
         }
 
-        [Test]
+        [Fact]
         public void count_is_two_after_inserting_two_different_IPv6_ranges()
         {
             var dict = new IPRangeDictionary<object>();
             dict.Add(IPAddress.IPv6Any, IPAddress.IPv6Any, null);
             dict.Add(IPAddress.IPv6Loopback, IPAddress.IPv6Loopback, null);
-            Assert.AreEqual(2, dict.Count);
+            Assert.Equal(2, dict.Count);
         }
 
-        [Test]
+        [Fact]
         public void count_is_two_after_inserting_two_different_IPv4_ranges_with_same_from_address()
         {
             var dict = new IPRangeDictionary<object>();
             dict.Add(IPAddress.Any, IPAddress.Any, null);
             dict.Add(IPAddress.Any, IPAddress.Loopback, null);
-            Assert.AreEqual(2, dict.Count);
+            Assert.Equal(2, dict.Count);
         }
 
-        [Test]
+        [Fact]
         public void count_is_two_after_inserting_two_different_IPv6_ranges_with_same_from_address()
         {
             var dict = new IPRangeDictionary<object>();
             dict.Add(IPAddress.IPv6Any, IPAddress.IPv6Any, null);
             dict.Add(IPAddress.IPv6Any, IPAddress.IPv6Loopback, null);
-            Assert.AreEqual(2, dict.Count);
+            Assert.Equal(2, dict.Count);
         }
 
-        [Test]
-        [ExpectedException]
+        [Fact]
         public void add_throws_exception_when_trying_to_add_a_range_with_IPv4_and_IPv6_values()
         {
-            new IPRangeDictionary<object>().Add(IPAddress.Any, IPAddress.IPv6Any, null);
+            Assert.Throws<ArgumentException>(() => new IPRangeDictionary<object>().Add(IPAddress.Any, IPAddress.IPv6Any, null));
         }
 
-        [Test]
+        [Fact]
         public void contains_returns_always_false_for_empty_instance()
         {
-            Assert.AreEqual(false, new IPRangeDictionary<object>().Contains(IPAddress.Any));
+            Assert.Equal(false, new IPRangeDictionary<object>().Contains(IPAddress.Any));
         }
 
-        [TestCase("0.0.0.0")]
-        [TestCase("192.168.1.1")]
-        [TestCase("192.168.1.255")]
-        [TestCase("192.168.1.9")]
-        [TestCase("192.168.1.16")]
-        [TestCase("192.168.1.19")]
-        [TestCase("192.168.1.26")]
-        [TestCase("192.168.1.29")]
-        [TestCase("192.168.1.36")]
-        [TestCase("192.168.1.39")]
-        [TestCase("192.168.1.46")]
-        [TestCase("192.168.1.49")]
-        [TestCase("192.168.1.56")]
+        [InlineData("0.0.0.0")]
+        [InlineData("192.168.1.1")]
+        [InlineData("192.168.1.255")]
+        [InlineData("192.168.1.9")]
+        [InlineData("192.168.1.16")]
+        [InlineData("192.168.1.19")]
+        [InlineData("192.168.1.26")]
+        [InlineData("192.168.1.29")]
+        [InlineData("192.168.1.36")]
+        [InlineData("192.168.1.39")]
+        [InlineData("192.168.1.46")]
+        [InlineData("192.168.1.49")]
+        [InlineData("192.168.1.56")]
         public void describe_dictionary_with_many_nonoverlapping_IPv4_ranges_check_contains_ip_that_is_not_in_any_range(string ipAddress)
         {
             var dict = new IPRangeDictionary<string>();
@@ -139,24 +138,24 @@ namespace IpRanges.Tests
             dict.Add(IPAddress.Parse("192.168.1.40"), IPAddress.Parse("192.168.1.45"), null);
             dict.Add(IPAddress.Parse("192.168.1.50"), IPAddress.Parse("192.168.1.55"), null);
 
-            Assert.AreEqual(false, dict.Contains(IPAddress.Parse(ipAddress)));
+            Assert.Equal(false, dict.Contains(IPAddress.Parse(ipAddress)));
         }
 
-        [TestCase("192.168.1.10", "A")]
-        [TestCase("192.168.1.11", "A")]
-        [TestCase("192.168.1.15", "A")]
-        [TestCase("192.168.1.20", "B")]
-        [TestCase("192.168.1.21", "B")]
-        [TestCase("192.168.1.25", "B")]
-        [TestCase("192.168.1.30", "C")]
-        [TestCase("192.168.1.31", "C")]
-        [TestCase("192.168.1.35", "C")]
-        [TestCase("192.168.1.40", "D")]
-        [TestCase("192.168.1.41", "D")]
-        [TestCase("192.168.1.45", "D")]
-        [TestCase("192.168.1.50", "E")]
-        [TestCase("192.168.1.51", "E")]
-        [TestCase("192.168.1.55", "E")]
+        [InlineData("192.168.1.10", "A")]
+        [InlineData("192.168.1.11", "A")]
+        [InlineData("192.168.1.15", "A")]
+        [InlineData("192.168.1.20", "B")]
+        [InlineData("192.168.1.21", "B")]
+        [InlineData("192.168.1.25", "B")]
+        [InlineData("192.168.1.30", "C")]
+        [InlineData("192.168.1.31", "C")]
+        [InlineData("192.168.1.35", "C")]
+        [InlineData("192.168.1.40", "D")]
+        [InlineData("192.168.1.41", "D")]
+        [InlineData("192.168.1.45", "D")]
+        [InlineData("192.168.1.50", "E")]
+        [InlineData("192.168.1.51", "E")]
+        [InlineData("192.168.1.55", "E")]
         public void describe_dictionary_with_many_nonoverlapping_IPv4_ranges_try_get_value_for_ip_in_range(string ipAddress, string expected)
         {
             var dict = new IPRangeDictionary<string>();
@@ -167,23 +166,23 @@ namespace IpRanges.Tests
             dict.Add(IPAddress.Parse("192.168.1.50"), IPAddress.Parse("192.168.1.55"), "E");
 
             string value;
-            Assert.AreEqual(true, dict.TryGetValue(IPAddress.Parse(ipAddress), out value));
-            Assert.AreEqual(expected, value);
+            Assert.Equal(true, dict.TryGetValue(IPAddress.Parse(ipAddress), out value));
+            Assert.Equal(expected, value);
         }
 
-        [TestCase("::")]
-        [TestCase("fe80:0:0:0:0::1")]
-        [TestCase("fe80:0:0:0:ffff::1")]
-        [TestCase("fe80:0:0:0:0009::1")]
-        [TestCase("fe80:0:0:0:0016::1")]
-        [TestCase("fe80:0:0:0:0019::1")]
-        [TestCase("fe80:0:0:0:0026::1")]
-        [TestCase("fe80:0:0:0:0029::1")]
-        [TestCase("fe80:0:0:0:0036::1")]
-        [TestCase("fe80:0:0:0:0039::1")]
-        [TestCase("fe80:0:0:0:0046::1")]
-        [TestCase("fe80:0:0:0:0049::1")]
-        [TestCase("fe80:0:0:0:0056::1")]
+        [InlineData("::")]
+        [InlineData("fe80:0:0:0:0::1")]
+        [InlineData("fe80:0:0:0:ffff::1")]
+        [InlineData("fe80:0:0:0:0009::1")]
+        [InlineData("fe80:0:0:0:0016::1")]
+        [InlineData("fe80:0:0:0:0019::1")]
+        [InlineData("fe80:0:0:0:0026::1")]
+        [InlineData("fe80:0:0:0:0029::1")]
+        [InlineData("fe80:0:0:0:0036::1")]
+        [InlineData("fe80:0:0:0:0039::1")]
+        [InlineData("fe80:0:0:0:0046::1")]
+        [InlineData("fe80:0:0:0:0049::1")]
+        [InlineData("fe80:0:0:0:0056::1")]
         public void describe_dictionary_with_many_nonoverlapping_IPv6_ranges_check_contains_ip_that_is_not_in_any_range(string ipAddress)
         {
             var dict = new IPRangeDictionary<string>();
@@ -193,24 +192,24 @@ namespace IpRanges.Tests
             dict.Add(IPAddress.Parse("fe80:0:0:0:0040::1"), IPAddress.Parse("fe80:0:0:0:0045::1"), null);
             dict.Add(IPAddress.Parse("fe80:0:0:0:0050::1"), IPAddress.Parse("fe80:0:0:0:0055::1"), null);
 
-            Assert.AreEqual(false, dict.Contains(IPAddress.Parse(ipAddress)));
+            Assert.Equal(false, dict.Contains(IPAddress.Parse(ipAddress)));
         }
 
-        [TestCase("fe80:0:0:0:0010::1", "A")]
-        [TestCase("fe80:0:0:0:0011::1", "A")]
-        [TestCase("fe80:0:0:0:0015::1", "A")]
-        [TestCase("fe80:0:0:0:0020::1", "B")]
-        [TestCase("fe80:0:0:0:0021::1", "B")]
-        [TestCase("fe80:0:0:0:0025::1", "B")]
-        [TestCase("fe80:0:0:0:0030::1", "C")]
-        [TestCase("fe80:0:0:0:0031::1", "C")]
-        [TestCase("fe80:0:0:0:0035::1", "C")]
-        [TestCase("fe80:0:0:0:0040::1", "D")]
-        [TestCase("fe80:0:0:0:0041::1", "D")]
-        [TestCase("fe80:0:0:0:0045::1", "D")]
-        [TestCase("fe80:0:0:0:0050::1", "E")]
-        [TestCase("fe80:0:0:0:0051::1", "E")]
-        [TestCase("fe80:0:0:0:0055::1", "E")]
+        [InlineData("fe80:0:0:0:0010::1", "A")]
+        [InlineData("fe80:0:0:0:0011::1", "A")]
+        [InlineData("fe80:0:0:0:0015::1", "A")]
+        [InlineData("fe80:0:0:0:0020::1", "B")]
+        [InlineData("fe80:0:0:0:0021::1", "B")]
+        [InlineData("fe80:0:0:0:0025::1", "B")]
+        [InlineData("fe80:0:0:0:0030::1", "C")]
+        [InlineData("fe80:0:0:0:0031::1", "C")]
+        [InlineData("fe80:0:0:0:0035::1", "C")]
+        [InlineData("fe80:0:0:0:0040::1", "D")]
+        [InlineData("fe80:0:0:0:0041::1", "D")]
+        [InlineData("fe80:0:0:0:0045::1", "D")]
+        [InlineData("fe80:0:0:0:0050::1", "E")]
+        [InlineData("fe80:0:0:0:0051::1", "E")]
+        [InlineData("fe80:0:0:0:0055::1", "E")]
         public void describe_dictionary_with_many_nonoverlapping_IPv6_ranges_try_get_value_for_ip_in_range(string ipAddress, string expected)
         {
             var dict = new IPRangeDictionary<string>();
@@ -221,12 +220,12 @@ namespace IpRanges.Tests
             dict.Add(IPAddress.Parse("fe80:0:0:0:0050::1"), IPAddress.Parse("fe80:0:0:0:0055::1"), "E");
 
             string value;
-            Assert.AreEqual(true, dict.TryGetValue(IPAddress.Parse(ipAddress), out value));
-            Assert.AreEqual(expected, value);
+            Assert.Equal(true, dict.TryGetValue(IPAddress.Parse(ipAddress), out value));
+            Assert.Equal(expected, value);
         }
 
-        [Test]
-        [Explicit]
+        [Fact]
+        [RunnableInDebugOnly]
         public void PerformanceTestIpv4()
         {
             const long count = 1000000;
@@ -240,11 +239,11 @@ namespace IpRanges.Tests
             for (var i = 0; i < count; i++)
                 dict.TryGetValue(IPAddress.Any, out value);
             stopwatch.Stop();
-            Assert.Inconclusive("Elapsed in " + stopwatch.ElapsedMilliseconds + "ms, " + count * 1000 / stopwatch.ElapsedMilliseconds);
+            Console.WriteLine("Elapsed in " + stopwatch.ElapsedMilliseconds + "ms, " + count * 1000 / stopwatch.ElapsedMilliseconds);
         }
 
-        [Test]
-        [Explicit]
+        [Fact]
+        [RunnableInDebugOnly]
         public void PerformanceTestIpv6()
         {
             const long count = 1000000;
@@ -258,11 +257,11 @@ namespace IpRanges.Tests
             for (var i = 0; i < count; i++)
                 dict.TryGetValue(IPAddress.IPv6Any, out value);
             stopwatch.Stop();
-            Assert.Inconclusive("Elapsed in " + stopwatch.ElapsedMilliseconds + "ms, " + count * 1000 / stopwatch.ElapsedMilliseconds);
+            Console.WriteLine("Elapsed in " + stopwatch.ElapsedMilliseconds + "ms, " + count * 1000 / stopwatch.ElapsedMilliseconds);
         }
 
-        [Test]
-        [Explicit]
+        [Fact]
+        [RunnableInDebugOnly]
         public void run_example()
         {
             // get regions from resource
