@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Xml;
 
@@ -13,6 +15,9 @@ namespace IpRanges
         {
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
+                if (IsDynamicAssembly(assembly))
+                    continue;
+
                 string[] names;
                 try { names = assembly.GetManifestResourceNames(); }
                 catch { continue; }
@@ -36,9 +41,15 @@ namespace IpRanges
                         }
                     }
 
-                    yield return group;
+                    if (group.Regions.Any())
+                        yield return group;
                 }
             }
+        }
+
+        private static bool IsDynamicAssembly(Assembly assembly)
+        {
+            return (assembly.ManifestModule is System.Reflection.Emit.ModuleBuilder);
         }
 
         public static IPRangesGroup ParseFromXml(string xml)
