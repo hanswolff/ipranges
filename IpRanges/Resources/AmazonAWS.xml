@@ -1,12 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <!-- source: https://forums.aws.amazon.com/ann.jspa?annID=1701 -->
-<!-- last update: May 26, 2014 -->
+<!-- last update: Aug 20, 2014 -->
 <group name="AmazonAWS">
   <region name="AWS_US_Virginia" description="US East (Northern Virginia)">
     <range network="23.20.0.0/14" from="23.20.0.0" to="23.23.255.255" />
     <range network="50.16.0.0/15" from="50.16.0.0" to="50.17.255.255" />
     <range network="50.19.0.0/16" from="50.19.0.0" to="50.19.255.255" />
     <range network="54.80.0.0/13" from="54.80.0.0" to="54.87.255.255" />
+    <range network="54.88.0.0/14" from="54.88.0.0" to="54.91.255.255" />
+    <range network="54.92.128.0/17" from="54.92.128.0" to="54.92.255.255" />
+    <range network="54.160.0.0/13" from="54.160.0.0" to="54.167.255.255" />
+    <range network="54.172.0.0/15" from="54.172.0.0" to="54.173.255.255" />
     <range network="54.196.0.0/15" from="54.196.0.0" to="54.197.255.255" />
     <range network="54.198.0.0/16" from="54.198.0.0" to="54.198.255.255" />
     <range network="54.204.0.0/15" from="54.204.0.0" to="54.205.255.255" />
@@ -30,6 +34,7 @@
   </region>
   <region name="AWS_US_Oregon" description="US West (Oregon)">
     <range network="50.112.0.0/16" from="50.112.0.0" to="50.112.255.255" />
+    <range network="54.68.0.0/14" from="54.68.0.0" to="54.71.255.255" />
     <range network="54.184.0.0/13" from="54.184.0.0" to="54.191.255.255" />
     <range network="54.200.0.0/15" from="54.200.0.0" to="54.201.255.255" />
     <range network="54.202.0.0/15" from="54.202.0.0" to="54.203.255.255" />
@@ -41,6 +46,7 @@
   </region>
   <region name="AWS_US_NorthernCalifornia" description="US West (Northern California)">
     <range network="50.18.0.0/16" from="50.18.0.0" to="50.18.255.255" />
+    <range network="54.67.0.0/16" from="54.67.0.0" to="54.67.255.255" />
     <range network="54.176.0.0/15" from="54.176.0.0" to="54.177.255.255" />
     <range network="54.183.0.0/16" from="54.183.0.0" to="54.183.255.255" />
     <range network="54.193.0.0/16" from="54.193.0.0" to="54.193.255.255" />
@@ -56,9 +62,11 @@
     <range network="46.51.192.0/20" from="46.51.192.0" to="46.51.207.255" />
     <range network="46.137.0.0/17" from="46.137.0.0" to="46.137.127.255" />
     <range network="46.137.128.0/18" from="46.137.128.0" to="46.137.191.255" />
-    <range network="54.72.0.0/14" from="54.72.0.0" to="54.75.255.255" />
+    <range network="54.72.0.0/15" from="54.72.0.0" to="54.73.255.255" />
+    <range network="54.74.0.0/15" from="54.74.0.0" to="54.75.255.255" />
     <range network="54.76.0.0/15" from="54.76.0.0" to="54.77.255.255" />
     <range network="54.78.0.0/16" from="54.78.0.0" to="54.78.255.255" />
+    <range network="54.170.0.0/15" from="54.170.0.0" to="54.171.255.255" />
     <range network="54.194.0.0/15" from="54.194.0.0" to="54.195.255.255" />
     <range network="54.216.0.0/15" from="54.216.0.0" to="54.217.255.255" />
     <range network="54.220.0.0/16" from="54.220.0.0" to="54.220.255.255" />
@@ -69,10 +77,12 @@
     <range network="79.125.0.0/17" from="79.125.0.0" to="79.125.127.255" />
     <range network="176.34.64.0/18" from="176.34.64.0" to="176.34.127.255" />
     <range network="176.34.128.0/17" from="176.34.128.0" to="176.34.255.255" />
+    <range network="185.48.120.0/22" from="185.48.120.0" to="185.48.123.255" />
   </region>
   <region name="AWS_AsiaPacific_Singapore" description="Asia Pacific (Singapore)">
     <range network="46.51.216.0/21" from="46.51.216.0" to="46.51.223.255" />
     <range network="46.137.192.0/18" from="46.137.192.0" to="46.137.255.255" />
+    <range network="54.169.0.0/16" from="54.169.0.0" to="54.169.255.255" />
     <range network="54.179.0.0/16" from="54.179.0.0" to="54.179.255.255" />
     <range network="54.251.0.0/16" from="54.251.0.0" to="54.251.255.255" />
     <range network="54.254.0.0/16" from="54.254.0.0" to="54.254.255.255" />
@@ -81,6 +91,7 @@
     <range network="175.41.128.0/18" from="175.41.128.0" to="175.41.191.255" />
   </region>
   <region name="AWS_AsiaPacific_Sydney" description="Asia Pacific (Sydney)">
+    <range network="54.66.0.0/16" from="54.66.0.0" to="54.66.255.255" />
     <range network="54.79.0.0/16" from="54.79.0.0" to="54.79.255.255" />
     <range network="54.206.0.0/16" from="54.206.0.0" to="54.206.255.255" />
     <range network="54.252.0.0/16" from="54.252.0.0" to="54.252.255.255" />
@@ -88,7 +99,10 @@
   </region>
   <region name="AWS_AsiaPacific_Tokyo" description="Asia Pacific (Tokyo)">
     <range network="46.51.224.0/19" from="46.51.224.0" to="46.51.255.255" />
+    <range network="54.64.0.0/15" from="54.64.0.0" to="54.65.255.255" />
+    <range network="54.92.0.0/17" from="54.92.0.0" to="54.92.127.255" />
     <range network="54.95.0.0/16" from="54.95.0.0" to="54.95.255.255" />
+    <range network="54.168.0.0/16" from="54.168.0.0" to="54.168.255.255" />
     <range network="54.178.0.0/16" from="54.178.0.0" to="54.178.255.255" />
     <range network="54.199.0.0/16" from="54.199.0.0" to="54.199.255.255" />
     <range network="54.238.0.0/16" from="54.238.0.0" to="54.238.255.255" />
@@ -100,6 +114,7 @@
     <range network="176.34.0.0/18" from="176.34.0.0" to="176.34.63.255" />
   </region>
   <region name="AWS_SouthAmerica_SaoPaulo" description="South America (Sao Paulo)">
+    <range network="54.94.0.0/16" from="54.94.0.0" to="54.94.255.255" />
     <range network="54.207.0.0/16" from="54.207.0.0" to="54.207.255.255" />
     <range network="54.232.0.0/16" from="54.232.0.0" to="54.232.255.255" />
     <range network="54.233.0.0/16" from="54.233.0.0" to="54.233.255.255" />
@@ -107,5 +122,6 @@
   </region>
   <region name="AWS_GovCloud" description="GovCloud">
     <range network="96.127.0.0/18" from="96.127.0.0" to="96.127.63.255" />
+    <range network="96.127.64.0/18" from="96.127.64.0" to="96.127.127.255" />
   </region>
 </group>

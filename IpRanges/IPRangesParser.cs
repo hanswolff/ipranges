@@ -27,18 +27,15 @@ namespace IpRanges
                     if (!resName.EndsWith(".xml")) continue;
 
                     IPRangesGroup group;
-                    try
+                    using (var reader = new XmlTextReader(assembly.GetManifestResourceStream(resName)))
                     {
-                        group = ParseFromXml(assembly.GetManifestResourceStream(resName));
+                        Exception exception;
+                        if (!TryParseFromXml(reader, out group, out exception, true))
+                        {
+                            throw exception;
+                        }
                     }
-                    catch (XmlException)
-                    {
-                        continue;
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new InvalidDataException(String.Format("Resource '{0}' has an invalid entry:\r\n", resName), ex);
-                    }
+
                     yield return group;
                 }
             }
@@ -63,10 +60,28 @@ namespace IpRanges
 
         public static IPRangesGroup ParseFromXml(XmlTextReader reader)
         {
+            Exception exception;
+            IPRangesGroup group;
+            if (!TryParseFromXml(reader, out group, out exception))
+                throw exception;
+
+            return group;
+        }
+
+        public static bool TryParseFromXml(XmlTextReader reader, out IPRangesGroup group, out Exception exception)
+        {
+            return TryParseFromXml(reader, out group, out exception, false);
+        }
+
+        public static bool TryParseFromXml(XmlTextReader reader, out IPRangesGroup group, out Exception exception, bool skipIfRootElementNotMatching)
+        {
             if (reader == null) throw new ArgumentNullException("reader");
 
-            IPRangesGroup group = null;
+            exception = null;
+            group = null;
+
             IPRangesRegion region = null;
+            IPRangesGroup result = null;
 
             var level = 0;
             while (reader.Read())
@@ -82,25 +97,44 @@ namespace IpRanges
                             {
                                 if (name == "group")
                                 {
-                                    group = ReadGroupElement(reader);
+                                    result = ReadGroupElement(reader);
                                     continue;
                                 }
-                                throw new XmlException("Invalid root element('" + reader.Name + "'), expecting 'group'");
+
+                                if (skipIfRootElementNotMatching)
+                                {
+                                    group = new IPRangesGroup();
+                                    return true;
+                                }
+                                exception = new XmlException("Invalid root element('" + reader.Name + "'), expecting 'group'");
+                                return false;
                             }
 
                             if (level == 2 && name == "region")
                             {
-                                if (group == null) throw new InvalidDataException("Missing appropriate root element");
+                                if (result == null)
+                                {
+                                    exception = new InvalidDataException("Missing appropriate root element");
+                                    return false;
+                                }
                                 region = ReadRegionElement(reader);
-                                region.ParentGroup = group;
-                                group.Regions.Add(region);
+                                region.ParentGroup = result;
+                                result.Regions.Add(region);
                                 continue;
                             }
 
-                            if (level == 3 && name == "range")
+                            if (level == 3 && (name == "range" || name == "iprange"))
                             {
-                                if (group == null) throw new InvalidDataException("Missing 'group' element");
-                                if (region == null) throw new InvalidDataException("Missing 'region' element");
+                                if (result == null)
+                                {
+                                    exception = new InvalidDataException("Missing 'group' element");
+                                    return false;
+                                }
+                                if (region == null)
+                                {
+                                    exception = new InvalidDataException("Missing 'region' element");
+                                    return false;
+                                }
 
                                 region.Ranges.Add(ReadRangeElement(reader));
                             }
@@ -112,12 +146,17 @@ namespace IpRanges
                         break;
                     case XmlNodeType.EndElement:
                         level--;
-                        if (level == 0) return group;
+                        if (level == 0)
+                        {
+                            group = result;
+                            return true;
+                        }
                         break;
                 }
             }
 
-            return group;
+            group = result;
+            return true;
         }
 
         private static IPRangesGroup ReadGroupElement(XmlReader reader)
@@ -164,7 +203,10 @@ namespace IpRanges
                 var attrName = reader.Name.ToLowerInvariant();
                 switch (attrName)
                 {
-                    case "network": network = reader.Value.Trim(); break;
+                    case "network":
+                    case "subnet":
+                        network = reader.Value.Trim(); break;
+
                     case "from": from = reader.Value.Trim(); break;
                     case "to": to = reader.Value.Trim(); break;
                 }
