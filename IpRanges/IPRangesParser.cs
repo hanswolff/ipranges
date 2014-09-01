@@ -32,7 +32,10 @@ namespace IpRanges
                     if (!resName.EndsWith(".xml")) continue;
 
                     IPRangesGroup group;
-                    using (var reader = new XmlTextReader(assembly.GetManifestResourceStream(resName)))
+                    var stream = assembly.GetManifestResourceStream(resName);
+                    if (stream == null) continue;
+
+                    using (var reader = new XmlTextReader(stream))
                     {
                         Exception exception;
                         if (!TryParseFromXml(reader, out group, out exception, true))
