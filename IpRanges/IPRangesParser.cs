@@ -52,7 +52,7 @@ namespace IpRanges
 
         private static bool IsDynamicAssembly(Assembly assembly)
         {
-            return (assembly.ManifestModule is System.Reflection.Emit.ModuleBuilder);
+            return (assembly.IsDynamic || assembly.ManifestModule is System.Reflection.Emit.ModuleBuilder);
         }
 
         public static IPRangesGroup ParseFromXml(string xml)
