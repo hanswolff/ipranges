@@ -61,6 +61,8 @@ namespace IpRanges.Tests
         [InlineData("192.168.1.1", "192.168.1.1", "192.168.1.0/32")]
         [InlineData("192.168.1.0", "192.168.1.1", "192.168.1.1/31")]
         [InlineData("192.168.1.0", "192.168.1.255", "192.168.1.0/24")]
+        [InlineData("46.51.216.0", "46.51.223.255", "46.51.216.0/21")]
+        [InlineData("2604:A880::", "2604:A880:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF", "2604:A880::/32")]
         public void GetNetwork(string from, string to, string expectedNetwork)
         {
             var fromIp = IPAddress.Parse(from);
