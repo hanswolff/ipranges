@@ -11,6 +11,7 @@ PLEASE READ THE "LICENSE" FILE!
 Usage Example
 =============
 
+```c#
     public void run_example()
     {
         // get regions from resource
@@ -33,3 +34,4 @@ Usage Example
         if (dictionary.TryGetValue(ipAddress, out value))
             Console.WriteLine("IP address '{0}' is in region '{1}'", ipAddress, foundRegion);
     }
+```
