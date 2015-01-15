@@ -2,7 +2,7 @@
 <!-- last update: May 27, 2014 -->
 <group name="CloudFlare">
   <!-- source: https://www.cloudflare.com/ips-->
-  <region name="CloudFlare" description="CloudFlare IPv4">
+  <region id="CloudFlare" description="CloudFlare IPv4">
     <range network="199.27.128.0/21" from="199.27.128.0" to="199.27.135.255" />
     <range network="173.245.48.0/20" from="173.245.48.0" to="173.245.63.255" />
     <range network="103.21.244.0/22" from="103.21.244.0" to="103.21.247.255" />
@@ -17,7 +17,7 @@
     <range network="162.158.0.0/15" from="162.158.0.0" to="162.159.255.255" />
     <range network="104.16.0.0/12" from="104.16.0.0" to="104.31.255.255" />
   </region>
-  <region name="CloudFlare" description="CloudFlare IPv6">
+  <region id="CloudFlare" description="CloudFlare IPv6">
     <range network="2400:cb00::/32" from="2400:cb00::" to="2400:cb00:ffff:ffff:ffff:ffff:ffff:ffff" />
     <range network="2606:4700::/32" from="2606:4700::" to="2606:4700:ffff:ffff:ffff:ffff:ffff:ffff" />
     <range network="2803:f800::/32" from="2803:f800::" to="2803:f800:ffff:ffff:ffff:ffff:ffff:ffff" />

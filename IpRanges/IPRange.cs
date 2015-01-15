@@ -8,7 +8,7 @@ namespace IpRanges
 {
     [DebuggerDisplay("{From} - {To}")]
     [Serializable]
-    public class IPRange
+    public class IPRange : IEquatable<IPRange>
     {
         public IPAddress From { get; set; }
         public IPAddress To { get; set; }
@@ -57,7 +57,44 @@ namespace IpRanges
             }
         }
 
-        private static bool TryParseNetwork(string network, out IPRange range, out Exception exception)
+        public string GetNetwork()
+        {
+            var lastBitsFrom = CountLastBits(From.GetAddressBytes(), false);
+            var lastBitsTo = CountLastBits(To.GetAddressBytes(), true);
+
+            var bitsInRange = Math.Min(lastBitsFrom, lastBitsTo);
+            var bitsPerIp = From.GetAddressBytes().Length * 8;
+
+            var network = From + "/" + (bitsPerIp - bitsInRange);
+
+            var checkRegion = IPRange.Parse(network);
+            if (!checkRegion.From.Equals(From) || !checkRegion.To.Equals(To))
+                throw new InvalidOperationException(String.Format("Could not determine network for IP range {0} to {1}", From, To));
+
+            return network;
+        }
+
+        private static int CountLastBits(byte[] array, bool bitsSet)
+        {
+            var result = 0;
+            for (var i = array.Length; i > 0; i--)
+            {
+                var b = array[i - 1];
+
+                for (var bitIndex = 0; bitIndex < 8; bitIndex++)
+                {
+                    var hasBit = (b & (1 << bitIndex)) > 0;
+                    if (bitsSet != hasBit)
+                    {
+                        return result;
+                    }
+                    result++;
+                }
+            }
+            return result;
+        }
+
+        public static bool TryParseNetwork(string network, out IPRange range, out Exception exception)
         {
             exception = null;
             range = null;
@@ -113,6 +150,32 @@ namespace IpRanges
                 throw exception;
 
             return range;
+        }
+
+        private static readonly IPAddressComparer IpAddressComparer = new IPAddressComparer();
+        public bool Equals(IPRange other)
+        {
+            if (other == null) return false;
+            return (IpAddressComparer.Compare(From, other.From) == 0) &&
+                   (IpAddressComparer.Compare(To, other.To)) == 0;
+        }
+
+        public override bool Equals(object obj)
+        {
+            IPRange range = obj as IPRange;
+            if (range == null) return false;
+
+            return Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return 
+                    ((From != null ? From.GetHashCode() : 0) * 397) ^ 
+                    (To != null ? To.GetHashCode() : 0);
+            }
         }
     }
 }

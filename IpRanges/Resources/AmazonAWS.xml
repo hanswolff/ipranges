@@ -1,63 +1,86 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<!-- source: https://forums.aws.amazon.com/ann.jspa?annID=1701 -->
-<!-- last update: Aug 20, 2014 -->
+<!-- source: https://ip-ranges.amazonaws.com/ip-ranges.json -->
+<!-- last update: Jan 6, 2015 -->
 <group name="AmazonAWS">
-  <region name="AWS_US_Virginia" description="US East (Northern Virginia)">
-    <range network="23.20.0.0/14" from="23.20.0.0" to="23.23.255.255" />
-    <range network="50.16.0.0/15" from="50.16.0.0" to="50.17.255.255" />
-    <range network="50.19.0.0/16" from="50.19.0.0" to="50.19.255.255" />
-    <range network="54.80.0.0/13" from="54.80.0.0" to="54.87.255.255" />
-    <range network="54.88.0.0/14" from="54.88.0.0" to="54.91.255.255" />
-    <range network="54.92.128.0/17" from="54.92.128.0" to="54.92.255.255" />
-    <range network="54.160.0.0/13" from="54.160.0.0" to="54.167.255.255" />
-    <range network="54.172.0.0/15" from="54.172.0.0" to="54.173.255.255" />
-    <range network="54.196.0.0/15" from="54.196.0.0" to="54.197.255.255" />
-    <range network="54.198.0.0/16" from="54.198.0.0" to="54.198.255.255" />
-    <range network="54.204.0.0/15" from="54.204.0.0" to="54.205.255.255" />
-    <range network="54.208.0.0/15" from="54.208.0.0" to="54.209.255.255" />
-    <range network="54.210.0.0/15" from="54.210.0.0" to="54.211.255.255" />
-    <range network="54.221.0.0/16" from="54.221.0.0" to="54.221.255.255" />
-    <range network="54.224.0.0/15" from="54.224.0.0" to="54.225.255.255" />
-    <range network="54.226.0.0/15" from="54.226.0.0" to="54.227.255.255" />
-    <range network="54.234.0.0/15" from="54.234.0.0" to="54.235.255.255" />
-    <range network="54.236.0.0/15" from="54.236.0.0" to="54.237.255.255" />
-    <range network="54.242.0.0/15" from="54.242.0.0" to="54.243.255.255" />
-    <range network="67.202.0.0/18" from="67.202.0.0" to="67.202.63.255" />
-    <range network="72.44.32.0/19" from="72.44.32.0" to="72.44.63.255" />
-    <range network="75.101.128.0/17" from="75.101.128.0" to="75.101.255.255" />
-    <range network="107.20.0.0/14" from="107.20.0.0" to="107.23.255.255" />
-    <range network="174.129.0.0/16" from="174.129.0.0" to="174.129.255.255" />
-    <range network="184.72.64.0/18" from="184.72.64.0" to="184.72.127.255" />
-    <range network="184.72.128.0/17" from="184.72.128.0" to="184.72.255.255" />
-    <range network="184.73.0.0/16" from="184.73.0.0" to="184.73.255.255" />
-    <range network="204.236.192.0/18" from="204.236.192.0" to="204.236.255.255" />
+  <region id="AWS_AsiaPacific_Singapore" name="ap-southeast-1" description="Asia Pacific (Singapore)">
+    <range network="46.51.216.0/21" from="46.51.216.0" to="46.51.223.255" />
+    <range network="46.137.192.0/19" from="46.137.192.0" to="46.137.223.255" />
+    <range network="46.137.224.0/19" from="46.137.224.0" to="46.137.255.255" />
+    <range network="54.151.128.0/17" from="54.151.128.0" to="54.151.255.255" />
+    <range network="54.169.0.0/16" from="54.169.0.0" to="54.169.255.255" />
+    <range network="54.179.0.0/16" from="54.179.0.0" to="54.179.255.255" />
+    <range network="54.231.240.0/22" from="54.231.240.0" to="54.231.243.255" />
+    <range network="54.240.199.0/24" from="54.240.199.0" to="54.240.199.255" />
+    <range network="54.240.226.0/24" from="54.240.226.0" to="54.240.226.255" />
+    <range network="54.240.227.0/24" from="54.240.227.0" to="54.240.227.255" />
+    <range network="54.251.0.0/16" from="54.251.0.0" to="54.251.255.255" />
+    <range network="54.251.31.128/26" from="54.251.31.128" to="54.251.31.191" />
+    <range network="54.254.0.0/16" from="54.254.0.0" to="54.254.255.255" />
+    <range network="54.255.0.0/16" from="54.255.0.0" to="54.255.255.255" />
+    <range network="54.255.254.192/26" from="54.255.254.192" to="54.255.254.255" />
+    <range network="103.246.148.0/23" from="103.246.148.0" to="103.246.149.255" />
+    <range network="122.248.192.0/18" from="122.248.192.0" to="122.248.255.255" />
+    <range network="175.41.128.0/18" from="175.41.128.0" to="175.41.191.255" />
+    <range network="203.83.220.0/22" from="203.83.220.0" to="203.83.223.255" />
   </region>
-  <region name="AWS_US_Oregon" description="US West (Oregon)">
-    <range network="50.112.0.0/16" from="50.112.0.0" to="50.112.255.255" />
-    <range network="54.68.0.0/14" from="54.68.0.0" to="54.71.255.255" />
-    <range network="54.184.0.0/13" from="54.184.0.0" to="54.191.255.255" />
-    <range network="54.200.0.0/15" from="54.200.0.0" to="54.201.255.255" />
-    <range network="54.202.0.0/15" from="54.202.0.0" to="54.203.255.255" />
-    <range network="54.212.0.0/15" from="54.212.0.0" to="54.213.255.255" />
-    <range network="54.214.0.0/16" from="54.214.0.0" to="54.214.255.255" />
-    <range network="54.218.0.0/16" from="54.218.0.0" to="54.218.255.255" />
-    <range network="54.244.0.0/16" from="54.244.0.0" to="54.244.255.255" />
-    <range network="54.245.0.0/16" from="54.245.0.0" to="54.245.255.255" />
+  <region id="AWS_AsiaPacific_Sydney" name="ap-southeast-2" description="Asia Pacific (Sydney)">
+    <range network="52.64.0.0/17" from="52.64.0.0" to="52.64.127.255" />
+    <range network="54.66.0.0/16" from="54.66.0.0" to="54.66.255.255" />
+    <range network="54.79.0.0/16" from="54.79.0.0" to="54.79.255.255" />
+    <range network="54.206.0.0/16" from="54.206.0.0" to="54.206.255.255" />
+    <range network="54.231.252.0/24" from="54.231.252.0" to="54.231.252.255" />
+    <range network="54.240.192.0/22" from="54.240.192.0" to="54.240.195.255" />
+    <range network="54.240.203.0/24" from="54.240.203.0" to="54.240.203.255" />
+    <range network="54.240.204.0/22" from="54.240.204.0" to="54.240.207.255" />
+    <range network="54.252.0.0/16" from="54.252.0.0" to="54.252.255.255" />
+    <range network="54.252.79.128/26" from="54.252.79.128" to="54.252.79.191" />
+    <range network="54.252.254.192/26" from="54.252.254.192" to="54.252.254.255" />
+    <range network="54.253.0.0/16" from="54.253.0.0" to="54.253.255.255" />
   </region>
-  <region name="AWS_US_NorthernCalifornia" description="US West (Northern California)">
-    <range network="50.18.0.0/16" from="50.18.0.0" to="50.18.255.255" />
-    <range network="54.67.0.0/16" from="54.67.0.0" to="54.67.255.255" />
-    <range network="54.176.0.0/15" from="54.176.0.0" to="54.177.255.255" />
-    <range network="54.183.0.0/16" from="54.183.0.0" to="54.183.255.255" />
-    <range network="54.193.0.0/16" from="54.193.0.0" to="54.193.255.255" />
-    <range network="54.215.0.0/16" from="54.215.0.0" to="54.215.255.255" />
-    <range network="54.219.0.0/16" from="54.219.0.0" to="54.219.255.255" />
-    <range network="54.241.0.0/16" from="54.241.0.0" to="54.241.255.255" />
-    <range network="184.72.0.0/18" from="184.72.0.0" to="184.72.63.255" />
-    <range network="184.169.128.0/17" from="184.169.128.0" to="184.169.255.255" />
-    <range network="204.236.128.0/18" from="204.236.128.0" to="204.236.191.255" />
+  <region id="AWS_AsiaPacific_Tokyo" name="ap-northeast-1" description="Asia Pacific (Tokyo)">
+    <range network="27.0.0.0/22" from="27.0.0.0" to="27.0.3.255" />
+    <range network="46.51.224.0/19" from="46.51.224.0" to="46.51.255.255" />
+    <range network="54.64.0.0/15" from="54.64.0.0" to="54.65.255.255" />
+    <range network="54.92.0.0/17" from="54.92.0.0" to="54.92.127.255" />
+    <range network="54.95.0.0/16" from="54.95.0.0" to="54.95.255.255" />
+    <range network="54.150.0.0/16" from="54.150.0.0" to="54.150.255.255" />
+    <range network="54.168.0.0/16" from="54.168.0.0" to="54.168.255.255" />
+    <range network="54.178.0.0/16" from="54.178.0.0" to="54.178.255.255" />
+    <range network="54.199.0.0/16" from="54.199.0.0" to="54.199.255.255" />
+    <range network="54.231.224.0/21" from="54.231.224.0" to="54.231.231.255" />
+    <range network="54.238.0.0/16" from="54.238.0.0" to="54.238.255.255" />
+    <range network="54.239.52.0/23" from="54.239.52.0" to="54.239.53.255" />
+    <range network="54.239.96.0/24" from="54.239.96.0" to="54.239.96.255" />
+    <range network="54.240.200.0/24" from="54.240.200.0" to="54.240.200.255" />
+    <range network="54.240.225.0/24" from="54.240.225.0" to="54.240.225.255" />
+    <range network="54.248.0.0/15" from="54.248.0.0" to="54.249.255.255" />
+    <range network="54.248.220.0/26" from="54.248.220.0" to="54.248.220.63" />
+    <range network="54.250.0.0/16" from="54.250.0.0" to="54.250.255.255" />
+    <range network="54.250.253.192/26" from="54.250.253.192" to="54.250.253.255" />
+    <range network="103.4.8.0/21" from="103.4.8.0" to="103.4.15.255" />
+    <range network="103.246.150.0/23" from="103.246.150.0" to="103.246.151.255" />
+    <range network="175.41.192.0/18" from="175.41.192.0" to="175.41.255.255" />
+    <range network="176.32.64.0/19" from="176.32.64.0" to="176.32.95.255" />
+    <range network="176.34.0.0/19" from="176.34.0.0" to="176.34.31.255" />
+    <range network="176.34.32.0/19" from="176.34.32.0" to="176.34.63.255" />
   </region>
-  <region name="AWS_EU_Ireland" description="EU (Ireland)">
+  <region id="AWS_China_Beijing" name="cn-north-1" description="China (Beijing)">
+    <range network="54.222.0.0/20" from="54.222.0.0" to="54.222.15.255" />
+    <range network="54.222.19.0/28" from="54.222.19.0" to="54.222.19.15" />
+    <range network="54.222.19.136/29" from="54.222.19.136" to="54.222.19.143" />
+    <range network="54.223.0.0/16" from="54.223.0.0" to="54.223.255.255" />
+    <range network="54.231.208.0/20" from="54.231.208.0" to="54.231.223.255" />
+  </region>
+  <region id="AWS_EU_Frankfurt" name="eu-central-1" description="EU (Frankfurt)">
+    <range network="54.93.0.0/16" from="54.93.0.0" to="54.93.255.255" />
+    <range network="54.231.192.0/20" from="54.231.192.0" to="54.231.207.255" />
+    <range network="54.239.4.0/22" from="54.239.4.0" to="54.239.7.255" />
+    <range network="54.239.54.0/23" from="54.239.54.0" to="54.239.55.255" />
+    <range network="54.239.56.0/21" from="54.239.56.0" to="54.239.63.255" />
+    <range network="54.240.236.0/22" from="54.240.236.0" to="54.240.239.255" />
+    <range network="54.240.240.0/24" from="54.240.240.0" to="54.240.240.255" />
+  </region>
+  <region id="AWS_EU_Ireland" name="eu-west-1" description="EU (Ireland)">
     <range network="46.51.128.0/18" from="46.51.128.0" to="46.51.191.255" />
     <range network="46.51.192.0/20" from="46.51.192.0" to="46.51.207.255" />
     <range network="46.137.0.0/17" from="46.137.0.0" to="46.137.127.255" />
@@ -66,62 +89,169 @@
     <range network="54.74.0.0/15" from="54.74.0.0" to="54.75.255.255" />
     <range network="54.76.0.0/15" from="54.76.0.0" to="54.77.255.255" />
     <range network="54.78.0.0/16" from="54.78.0.0" to="54.78.255.255" />
+    <range network="54.154.0.0/16" from="54.154.0.0" to="54.154.255.255" />
+    <range network="54.155.0.0/16" from="54.155.0.0" to="54.155.255.255" />
     <range network="54.170.0.0/15" from="54.170.0.0" to="54.171.255.255" />
     <range network="54.194.0.0/15" from="54.194.0.0" to="54.195.255.255" />
     <range network="54.216.0.0/15" from="54.216.0.0" to="54.217.255.255" />
     <range network="54.220.0.0/16" from="54.220.0.0" to="54.220.255.255" />
     <range network="54.228.0.0/16" from="54.228.0.0" to="54.228.255.255" />
+    <range network="54.228.16.0/26" from="54.228.16.0" to="54.228.16.63" />
     <range network="54.229.0.0/16" from="54.229.0.0" to="54.229.255.255" />
+    <range network="54.231.128.0/19" from="54.231.128.0" to="54.231.159.255" />
+    <range network="54.239.32.0/21" from="54.239.32.0" to="54.239.39.255" />
+    <range network="54.239.99.0/24" from="54.239.99.0" to="54.239.99.255" />
+    <range network="54.239.100.0/23" from="54.239.100.0" to="54.239.101.255" />
+    <range network="54.240.197.0/24" from="54.240.197.0" to="54.240.197.255" />
+    <range network="54.240.220.0/22" from="54.240.220.0" to="54.240.223.255" />
     <range network="54.246.0.0/16" from="54.246.0.0" to="54.246.255.255" />
     <range network="54.247.0.0/16" from="54.247.0.0" to="54.247.255.255" />
     <range network="79.125.0.0/17" from="79.125.0.0" to="79.125.127.255" />
+    <range network="87.238.80.0/21" from="87.238.80.0" to="87.238.87.255" />
+    <range network="176.32.104.0/21" from="176.32.104.0" to="176.32.111.255" />
     <range network="176.34.64.0/18" from="176.34.64.0" to="176.34.127.255" />
     <range network="176.34.128.0/17" from="176.34.128.0" to="176.34.255.255" />
+    <range network="176.34.159.192/26" from="176.34.159.192" to="176.34.159.255" />
+    <range network="178.236.0.0/20" from="178.236.0.0" to="178.236.15.255" />
     <range network="185.48.120.0/22" from="185.48.120.0" to="185.48.123.255" />
   </region>
-  <region name="AWS_AsiaPacific_Singapore" description="Asia Pacific (Singapore)">
-    <range network="46.51.216.0/21" from="46.51.216.0" to="46.51.223.255" />
-    <range network="46.137.192.0/18" from="46.137.192.0" to="46.137.255.255" />
-    <range network="54.169.0.0/16" from="54.169.0.0" to="54.169.255.255" />
-    <range network="54.179.0.0/16" from="54.179.0.0" to="54.179.255.255" />
-    <range network="54.251.0.0/16" from="54.251.0.0" to="54.251.255.255" />
-    <range network="54.254.0.0/16" from="54.254.0.0" to="54.254.255.255" />
-    <range network="54.255.0.0/16" from="54.255.0.0" to="54.255.255.255" />
-    <range network="122.248.192.0/18" from="122.248.192.0" to="122.248.255.255" />
-    <range network="175.41.128.0/18" from="175.41.128.0" to="175.41.191.255" />
+  <region id="AWS_GovCloud" name="us-gov-west-1" description="GovCloud">
+    <range network="54.231.254.0/24" from="54.231.254.0" to="54.231.254.255" />
+    <range network="96.127.0.0/17" from="96.127.0.0" to="96.127.127.255" />
+    <range network="205.251.236.0/22" from="205.251.236.0" to="205.251.239.255" />
   </region>
-  <region name="AWS_AsiaPacific_Sydney" description="Asia Pacific (Sydney)">
-    <range network="54.66.0.0/16" from="54.66.0.0" to="54.66.255.255" />
-    <range network="54.79.0.0/16" from="54.79.0.0" to="54.79.255.255" />
-    <range network="54.206.0.0/16" from="54.206.0.0" to="54.206.255.255" />
-    <range network="54.252.0.0/16" from="54.252.0.0" to="54.252.255.255" />
-    <range network="54.253.0.0/16" from="54.253.0.0" to="54.253.255.255" />
-  </region>
-  <region name="AWS_AsiaPacific_Tokyo" description="Asia Pacific (Tokyo)">
-    <range network="46.51.224.0/19" from="46.51.224.0" to="46.51.255.255" />
-    <range network="54.64.0.0/15" from="54.64.0.0" to="54.65.255.255" />
-    <range network="54.92.0.0/17" from="54.92.0.0" to="54.92.127.255" />
-    <range network="54.95.0.0/16" from="54.95.0.0" to="54.95.255.255" />
-    <range network="54.168.0.0/16" from="54.168.0.0" to="54.168.255.255" />
-    <range network="54.178.0.0/16" from="54.178.0.0" to="54.178.255.255" />
-    <range network="54.199.0.0/16" from="54.199.0.0" to="54.199.255.255" />
-    <range network="54.238.0.0/16" from="54.238.0.0" to="54.238.255.255" />
-    <range network="54.248.0.0/15" from="54.248.0.0" to="54.249.255.255" />
-    <range network="54.250.0.0/16" from="54.250.0.0" to="54.250.255.255" />
-    <range network="103.4.8.0/21" from="103.4.8.0" to="103.4.15.255" />
-    <range network="175.41.192.0/18" from="175.41.192.0" to="175.41.255.255" />
-    <range network="176.32.64.0/19" from="176.32.64.0" to="176.32.95.255" />
-    <range network="176.34.0.0/18" from="176.34.0.0" to="176.34.63.255" />
-  </region>
-  <region name="AWS_SouthAmerica_SaoPaulo" description="South America (Sao Paulo)">
+  <region id="AWS_SouthAmerica_SaoPaulo" name="sa-east-1" description="South America (Sao Paulo)">
     <range network="54.94.0.0/16" from="54.94.0.0" to="54.94.255.255" />
     <range network="54.207.0.0/16" from="54.207.0.0" to="54.207.255.255" />
+    <range network="54.231.253.0/24" from="54.231.253.0" to="54.231.253.255" />
     <range network="54.232.0.0/16" from="54.232.0.0" to="54.232.255.255" />
-    <range network="54.233.0.0/16" from="54.233.0.0" to="54.233.255.255" />
+    <range network="54.232.40.64/26" from="54.232.40.64" to="54.232.40.127" />
+    <range network="54.233.0.0/18" from="54.233.0.0" to="54.233.63.255" />
+    <range network="54.240.244.0/22" from="54.240.244.0" to="54.240.247.255" />
     <range network="177.71.128.0/17" from="177.71.128.0" to="177.71.255.255" />
+    <range network="177.71.207.128/26" from="177.71.207.128" to="177.71.207.191" />
+    <range network="177.72.240.0/21" from="177.72.240.0" to="177.72.247.255" />
   </region>
-  <region name="AWS_GovCloud" description="GovCloud">
-    <range network="96.127.0.0/18" from="96.127.0.0" to="96.127.63.255" />
-    <range network="96.127.64.0/18" from="96.127.64.0" to="96.127.127.255" />
+  <region id="AWS_US_NorthernCalifornia" name="us-west-1" description="US West (Northern California)">
+    <range network="50.18.0.0/16" from="50.18.0.0" to="50.18.255.255" />
+    <range network="54.67.0.0/16" from="54.67.0.0" to="54.67.255.255" />
+    <range network="54.151.0.0/17" from="54.151.0.0" to="54.151.127.255" />
+    <range network="54.176.0.0/15" from="54.176.0.0" to="54.177.255.255" />
+    <range network="54.183.0.0/16" from="54.183.0.0" to="54.183.255.255" />
+    <range network="54.183.255.128/26" from="54.183.255.128" to="54.183.255.191" />
+    <range network="54.193.0.0/16" from="54.193.0.0" to="54.193.255.255" />
+    <range network="54.215.0.0/16" from="54.215.0.0" to="54.215.255.255" />
+    <range network="54.219.0.0/16" from="54.219.0.0" to="54.219.255.255" />
+    <range network="54.231.232.0/21" from="54.231.232.0" to="54.231.239.255" />
+    <range network="54.240.198.0/24" from="54.240.198.0" to="54.240.198.255" />
+    <range network="54.241.0.0/16" from="54.241.0.0" to="54.241.255.255" />
+    <range network="54.241.32.64/26" from="54.241.32.64" to="54.241.32.127" />
+    <range network="176.32.112.0/21" from="176.32.112.0" to="176.32.119.255" />
+    <range network="184.72.0.0/18" from="184.72.0.0" to="184.72.63.255" />
+    <range network="184.169.128.0/17" from="184.169.128.0" to="184.169.255.255" />
+    <range network="204.236.128.0/18" from="204.236.128.0" to="204.236.191.255" />
+    <range network="204.246.160.0/22" from="204.246.160.0" to="204.246.163.255" />
+    <range network="205.251.228.0/22" from="205.251.228.0" to="205.251.231.255" />
+  </region>
+  <region id="AWS_US_Oregon" name="us-west-2" description="US West (Oregon)">
+    <range network="50.112.0.0/16" from="50.112.0.0" to="50.112.255.255" />
+    <range network="54.68.0.0/14" from="54.68.0.0" to="54.71.255.255" />
+    <range network="54.148.0.0/15" from="54.148.0.0" to="54.149.255.255" />
+    <range network="54.152.0.0/15" from="54.152.0.0" to="54.153.255.255" />
+    <range network="54.184.0.0/13" from="54.184.0.0" to="54.191.255.255" />
+    <range network="54.200.0.0/15" from="54.200.0.0" to="54.201.255.255" />
+    <range network="54.202.0.0/15" from="54.202.0.0" to="54.203.255.255" />
+    <range network="54.212.0.0/15" from="54.212.0.0" to="54.213.255.255" />
+    <range network="54.214.0.0/16" from="54.214.0.0" to="54.214.255.255" />
+    <range network="54.218.0.0/16" from="54.218.0.0" to="54.218.255.255" />
+    <range network="54.231.160.0/19" from="54.231.160.0" to="54.231.191.255" />
+    <range network="54.239.2.0/23" from="54.239.2.0" to="54.239.3.255" />
+    <range network="54.239.48.0/22" from="54.239.48.0" to="54.239.51.255" />
+    <range network="54.240.230.0/23" from="54.240.230.0" to="54.240.231.255" />
+    <range network="54.240.248.0/21" from="54.240.248.0" to="54.240.255.255" />
+    <range network="54.244.0.0/16" from="54.244.0.0" to="54.244.255.255" />
+    <range network="54.244.52.192/26" from="54.244.52.192" to="54.244.52.255" />
+    <range network="54.245.0.0/16" from="54.245.0.0" to="54.245.255.255" />
+    <range network="54.245.168.0/26" from="54.245.168.0" to="54.245.168.63" />
+    <range network="176.32.125.0/25" from="176.32.125.0" to="176.32.125.127" />
+    <range network="205.251.232.0/22" from="205.251.232.0" to="205.251.235.255" />
+  </region>
+  <region id="AWS_US_Virginia" name="us-east-1" description="US East (Northern Virginia)">
+    <range network="23.20.0.0/14" from="23.20.0.0" to="23.23.255.255" />
+    <range network="50.16.0.0/15" from="50.16.0.0" to="50.17.255.255" />
+    <range network="50.19.0.0/16" from="50.19.0.0" to="50.19.255.255" />
+    <range network="52.0.0.0/15" from="52.0.0.0" to="52.1.255.255" />
+    <range network="54.80.0.0/13" from="54.80.0.0" to="54.87.255.255" />
+    <range network="54.88.0.0/14" from="54.88.0.0" to="54.91.255.255" />
+    <range network="54.92.128.0/17" from="54.92.128.0" to="54.92.255.255" />
+    <range network="54.144.0.0/14" from="54.144.0.0" to="54.147.255.255" />
+    <range network="54.156.0.0/14" from="54.156.0.0" to="54.159.255.255" />
+    <range network="54.160.0.0/13" from="54.160.0.0" to="54.167.255.255" />
+    <range network="54.172.0.0/15" from="54.172.0.0" to="54.173.255.255" />
+    <range network="54.174.0.0/15" from="54.174.0.0" to="54.175.255.255" />
+    <range network="54.196.0.0/15" from="54.196.0.0" to="54.197.255.255" />
+    <range network="54.198.0.0/16" from="54.198.0.0" to="54.198.255.255" />
+    <range network="54.204.0.0/15" from="54.204.0.0" to="54.205.255.255" />
+    <range network="54.208.0.0/15" from="54.208.0.0" to="54.209.255.255" />
+    <range network="54.210.0.0/15" from="54.210.0.0" to="54.211.255.255" />
+    <range network="54.221.0.0/16" from="54.221.0.0" to="54.221.255.255" />
+    <range network="54.224.0.0/15" from="54.224.0.0" to="54.225.255.255" />
+    <range network="54.226.0.0/15" from="54.226.0.0" to="54.227.255.255" />
+    <range network="54.231.0.0/17" from="54.231.0.0" to="54.231.127.255" />
+    <range network="54.231.244.0/22" from="54.231.244.0" to="54.231.247.255" />
+    <range network="54.234.0.0/15" from="54.234.0.0" to="54.235.255.255" />
+    <range network="54.236.0.0/15" from="54.236.0.0" to="54.237.255.255" />
+    <range network="54.239.8.0/21" from="54.239.8.0" to="54.239.15.255" />
+    <range network="54.239.16.0/20" from="54.239.16.0" to="54.239.31.255" />
+    <range network="54.239.98.0/24" from="54.239.98.0" to="54.239.98.255" />
+    <range network="54.239.104.0/23" from="54.239.104.0" to="54.239.105.255" />
+    <range network="54.239.108.0/22" from="54.239.108.0" to="54.239.111.255" />
+    <range network="54.240.196.0/24" from="54.240.196.0" to="54.240.196.255" />
+    <range network="54.240.216.0/22" from="54.240.216.0" to="54.240.219.255" />
+    <range network="54.240.232.0/22" from="54.240.232.0" to="54.240.235.255" />
+    <range network="54.242.0.0/15" from="54.242.0.0" to="54.243.255.255" />
+    <range network="54.243.31.192/26" from="54.243.31.192" to="54.243.31.255" />
+    <range network="67.202.0.0/18" from="67.202.0.0" to="67.202.63.255" />
+    <range network="72.21.192.0/19" from="72.21.192.0" to="72.21.223.255" />
+    <range network="72.44.32.0/19" from="72.44.32.0" to="72.44.63.255" />
+    <range network="75.101.128.0/17" from="75.101.128.0" to="75.101.255.255" />
+    <range network="107.20.0.0/14" from="107.20.0.0" to="107.23.255.255" />
+    <range network="107.23.255.0/26" from="107.23.255.0" to="107.23.255.63" />
+    <range network="174.129.0.0/16" from="174.129.0.0" to="174.129.255.255" />
+    <range network="176.32.96.0/21" from="176.32.96.0" to="176.32.103.255" />
+    <range network="176.32.120.0/22" from="176.32.120.0" to="176.32.123.255" />
+    <range network="184.72.64.0/18" from="184.72.64.0" to="184.72.127.255" />
+    <range network="184.72.128.0/17" from="184.72.128.0" to="184.72.255.255" />
+    <range network="184.73.0.0/16" from="184.73.0.0" to="184.73.255.255" />
+    <range network="204.236.192.0/18" from="204.236.192.0" to="204.236.255.255" />
+    <range network="205.251.224.0/22" from="205.251.224.0" to="205.251.227.255" />
+    <range network="205.251.240.0/22" from="205.251.240.0" to="205.251.243.255" />
+    <range network="205.251.244.0/23" from="205.251.244.0" to="205.251.245.255" />
+    <range network="205.251.247.0/24" from="205.251.247.0" to="205.251.247.255" />
+    <range network="205.251.248.0/24" from="205.251.248.0" to="205.251.248.255" />
+    <range network="205.251.255.0/24" from="205.251.255.0" to="205.251.255.255" />
+    <range network="207.171.160.0/20" from="207.171.160.0" to="207.171.175.255" />
+    <range network="207.171.176.0/20" from="207.171.176.0" to="207.171.191.255" />
+    <range network="216.182.224.0/20" from="216.182.224.0" to="216.182.239.255" />
+  </region>
+  <region id="Global" name="global" description="Global">
+    <range network="54.182.0.0/16" from="54.182.0.0" to="54.182.255.255" />
+    <range network="54.192.0.0/16" from="54.192.0.0" to="54.192.255.255" />
+    <range network="54.230.0.0/16" from="54.230.0.0" to="54.230.255.255" />
+    <range network="54.239.128.0/18" from="54.239.128.0" to="54.239.191.255" />
+    <range network="54.239.192.0/19" from="54.239.192.0" to="54.239.223.255" />
+    <range network="54.240.128.0/18" from="54.240.128.0" to="54.240.191.255" />
+    <range network="176.32.125.0/25" from="176.32.125.0" to="176.32.125.127" />
+    <range network="204.246.164.0/22" from="204.246.164.0" to="204.246.167.255" />
+    <range network="204.246.168.0/22" from="204.246.168.0" to="204.246.171.255" />
+    <range network="204.246.174.0/23" from="204.246.174.0" to="204.246.175.255" />
+    <range network="204.246.176.0/20" from="204.246.176.0" to="204.246.191.255" />
+    <range network="205.251.192.0/19" from="205.251.192.0" to="205.251.223.255" />
+    <range network="205.251.192.0/21" from="205.251.192.0" to="205.251.199.255" />
+    <range network="205.251.249.0/24" from="205.251.249.0" to="205.251.249.255" />
+    <range network="205.251.250.0/23" from="205.251.250.0" to="205.251.251.255" />
+    <range network="205.251.252.0/23" from="205.251.252.0" to="205.251.253.255" />
+    <range network="205.251.254.0/24" from="205.251.254.0" to="205.251.254.255" />
+    <range network="216.137.32.0/19" from="216.137.32.0" to="216.137.63.255" />
   </region>
 </group>

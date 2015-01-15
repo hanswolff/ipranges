@@ -2,7 +2,7 @@
 <!-- last update: Aug 25, 2014 -->
 <group name="DigitalOcean">
   <!-- source: http://whois.arin.net/rest/org/DO-13/nets -->
-  <region name="DigitalOcean_USA" description="New York/San Francisco">
+  <region id="DigitalOcean_USA" description="New York/San Francisco">
     <!-- DIGITALOCEAN-1 -->
     <range network="208.68.36.0/22" from="208.68.36.0" to="208.68.39.255" />
     <!-- DIGITALOCEAN-2 -->
@@ -25,7 +25,7 @@
     <range network="2604:A880::/32" from="2604:A880::" to="2604:A880:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF" />
   </region>
   <!-- source: https://apps.db.ripe.net/search/ -->
-  <region name="DigitalOcean_Europe" description="Amsterdam">
+  <region id="DigitalOcean_Europe" description="Amsterdam">
     <!-- DIGITALOCEAN-AMS-1 -->
     <range from="185.14.184.0" to="185.14.186.255" />
     <!-- DIGITALOCEAN-AMS-2 -->

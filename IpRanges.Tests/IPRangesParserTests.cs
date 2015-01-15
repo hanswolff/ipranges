@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Xml;
 using Xunit;
 
@@ -26,22 +27,24 @@ namespace IpRanges.Tests
         [Fact]
         public void describe_region_element()
         {
-            const string xml = "<group><region name='test' /></group>";
+            const string xml = "<group><region id='testid' name='testname' description='description' /></group>";
             var group = IPRangesParser.ParseFromXml(xml);
 
             Assert.Equal(1, group.Regions.Count);
-            Assert.Equal("test", group.Regions[0].Name);
+            Assert.Equal("testid", group.Regions[0].Id);
+            Assert.Equal("testname", group.Regions[0].Name);
+            Assert.Equal("description", group.Regions[0].Description);
         }
 
         [Fact]
         public void describe_multiple_region_elements()
         {
-            const string xml = "<group><region name='test1' /><region name='test2'></region></group>";
+            const string xml = "<group><region id='test1' /><region id='test2'></region></group>";
             var group = IPRangesParser.ParseFromXml(xml);
 
             Assert.Equal(2, group.Regions.Count);
-            Assert.Equal("test1", group.Regions[0].Name);
-            Assert.Equal("test2", group.Regions[1].Name);
+            Assert.Equal("test1", group.Regions[0].Id);
+            Assert.Equal("test2", group.Regions[1].Id);
         }
 
         [Fact]
@@ -52,7 +55,7 @@ namespace IpRanges.Tests
 
             Assert.Equal(1, group.Regions.Count);
             Assert.Equal(1, group.Regions[0].Ranges.Count);
-            IPRange range = group.Regions[0].Ranges[0];
+            var range = group.Regions[0].Ranges[0];
             Assert.Equal("192.168.0.0", range.From.ToString());
             Assert.Equal("192.168.255.255", range.To.ToString());
         }
@@ -129,7 +132,7 @@ namespace IpRanges.Tests
 
                 foreach (var region in group.Regions)
                 {
-                    Assert.False(string.IsNullOrEmpty(region.Name));
+                    Assert.False(string.IsNullOrEmpty(region.Id), String.Format("Region is missing an ID: {0}", region.Name));
                     Assert.NotEqual(0, region.Ranges.Count);
                 }
             }

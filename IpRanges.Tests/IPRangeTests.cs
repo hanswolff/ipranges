@@ -58,6 +58,17 @@ namespace IpRanges.Tests
             Assert.Equal(toIp, range.To);
         }
 
+        [InlineData("192.168.1.1", "192.168.1.1", "192.168.1.0/32")]
+        [InlineData("192.168.1.0", "192.168.1.1", "192.168.1.1/31")]
+        [InlineData("192.168.1.0", "192.168.1.255", "192.168.1.0/24")]
+        public void GetNetwork(string from, string to, string expectedNetwork)
+        {
+            var fromIp = IPAddress.Parse(from);
+            var toIp = IPAddress.Parse(to);
+            var network = new IPRange(fromIp, toIp).GetNetwork();
+            Assert.Equal(expectedNetwork, network);
+        }
+
         [InlineData("127.0.0.1", 1)]
         [InlineData("127.0.0.1/32", 1)]
         [InlineData("127.0.0.1/31", 2)]

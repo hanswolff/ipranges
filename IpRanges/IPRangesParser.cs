@@ -181,7 +181,7 @@ namespace IpRanges
             while (reader.MoveToNextAttribute())
             {
                 var attrName = reader.Name.ToLowerInvariant();
-                if (attrName == "name") @group.Name = reader.Value;
+                if (attrName == "name") group.Name = reader.Value;
             }
             reader.MoveToContent();
             return group;
@@ -197,6 +197,7 @@ namespace IpRanges
                 var attrName = reader.Name.ToLowerInvariant();
                 switch (attrName)
                 {
+                    case "id": region.Id = reader.Value.Trim(); break;
                     case "name": region.Name = reader.Value.Trim(); break;
                     case "description": region.Description = reader.Value; break;
                 }
@@ -221,8 +222,13 @@ namespace IpRanges
                     case "subnet":
                         network = reader.Value.Trim(); break;
 
-                    case "from": from = reader.Value.Trim(); break;
-                    case "to": to = reader.Value.Trim(); break;
+                    case "from":
+                    case "fromip":
+                        from = reader.Value.Trim(); break;
+
+                    case "to":
+                    case "toip":
+                        to = reader.Value.Trim(); break;
                 }
             }
 
