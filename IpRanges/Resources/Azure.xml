@@ -1,10 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <!-- source: http://msdn.microsoft.com/en-us/library/windowsazure/dn175718.aspx -->
-<!-- last update: Aug 15, 2014 -->
+<!-- last update: Dec 4, 2014 -->
 <group name="MicrosoftAzure">
   <region name="Azure_EU_West" description="West Europe (Amsterdam, Netherlands)">
-    <range network="157.55.9.112/28" />
-    <range network="157.55.10.0/26" />
     <range network="65.52.128.0/19" />
     <range network="94.245.97.0/24" />
     <range network="137.116.192.0/19" />
@@ -21,18 +19,26 @@
     <range network="213.199.180.192/26" />
     <range network="213.199.183.0/24" />
     <range network="23.97.128.0/17" />
+    <range network="23.98.46.0/24" />
     <range network="23.100.0.0/20" />
     <range network="23.101.64.0/20" />
     <range network="104.40.128.0/18" />
+    <range network="104.40.192.0/19" />
+    <range network="104.45.0.0/18" />
+    <range network="104.45.64.0/20" />
+    <range network="104.46.32.0/19" />
     <range network="137.117.128.0/17" />
     <range network="168.61.56.0/21" />
     <range network="191.233.64.0/18" />
-    <range network="191.237.232.0/25" />
-    <range network="191.237.232.160/28" />
-    <range network="191.237.233.0/24" />
-    <range network="191.237.234.0/23" />
-    <range network="191.239.200.0/24" />
+    <range network="191.237.232.0/22" />
+    <range network="191.239.200.0/23" />
+    <range network="191.239.203.0/27" />
     <range network="193.149.84.0/22" />
+    <range network="104.47.128.0/28" />
+    <range network="104.47.129.0/24" />
+    <range network="104.47.136.0/21" />
+    <range network="104.47.144.0/20" />
+    <range network="104.47.160.0/21" />
   </region>
   <region name="Azure_US_East" description="East US (Virginia)">
     <range network="23.96.0.0/18" />
@@ -53,6 +59,11 @@
     <range network="168.61.48.0/21" />
     <range network="168.62.32.0/19" />
     <range network="168.62.160.0/19" />
+    <range network="104.45.128.0/20" />
+    <range network="104.45.144.0/20" />
+    <range network="104.45.160.0/20" />
+    <range network="104.45.176.0/20" />
+    <range network="104.45.192.0/20" />
     <range network="23.98.45.0/24" />
     <range network="104.41.128.0/19" />
     <range network="138.91.96.0/25" />
@@ -70,9 +81,12 @@
     <range network="191.238.16.0/20" />
     <range network="191.238.32.0/19" />
     <range network="191.237.0.0/19" />
-    <range network="191.237.32.0/28" />
+    <range network="191.237.32.0/25" />
+    <range network="191.237.32.128/27" />
     <range network="191.237.33.0/24" />
-    <!-- these are labelled "useast2" but there's no second US East data center?! -->
+    <range network="191.237.34.0/24" />
+    <range network="191.237.64.0/18" />
+    <!-- these are labelled "useast2" -->
     <range network="23.100.64.0/21" />
     <range network="23.101.144.0/20" />
     <range network="23.101.32.0/21" />
@@ -81,18 +95,28 @@
     <range network="137.116.96.0/22" />
     <range network="191.239.224.0/25" />
     <range network="193.149.64.0/21" />
+    <range network="104.46.192.0/20" />
+    <range network="23.102.204.0/23" />
+    <range network="23.102.206.0/26" />
+    <range network="23.102.206.64/27" />
+    <range network="23.102.207.0/24" />
+    <range network="104.46.0.0/21" />
+    <range network="104.46.96.0/19" />
+    <range network="104.209.128.0/19" />
+    <range network="104.210.0.0/20" />
     <range network="191.236.192.0/18" />
     <range network="191.237.128.0/19" />
-    <range network="191.237.160.0/25" />
-    <range network="191.237.161.0/24" />
-    <range network="191.237.162.0/23" />
+    <range network="191.237.160.0/22" />
+    <range network="191.237.164.0/24" />
+    <range network="191.237.168.0/21" />
+    <range network="191.237.176.0/20" />
+    <range network="104.208.128.0/27" />
   </region>
   <region name="Azure_US_West" description="West US (California)">
     <range network="23.100.32.0/20" />
     <range network="23.101.192.0/20" />
     <range network="137.116.184.0/21" />
     <range network="137.117.0.0/19" />
-    <range network="137.117.208.128/28" />
     <range network="137.135.0.0/18" />
     <range network="138.91.64.0/19" />
     <range network="157.56.160.0/21" />
@@ -101,6 +125,9 @@
     <range network="168.62.0.0/19" />
     <range network="168.62.192.0/19" />
     <range network="168.63.88.0/24" />
+    <range network="104.45.208.0/20" />
+    <range network="104.45.224.0/20" />
+    <range network="104.45.240.0/20" />
     <range network="23.99.64.0/19" />
     <range network="138.91.128.0/24" />
     <range network="138.91.129.0/26" />
@@ -119,21 +146,37 @@
     <range network="23.99.36.0/24" />
     <range network="23.99.37.0/26" />
     <range network="23.99.37.80/28" />
+    <range network="23.99.37.96/27" />
     <range network="23.99.37.128/27" />
+    <range network="23.99.37.176/28" />
+    <range network="23.99.37.192/26" />
     <range network="23.99.38.0/24" />
     <range network="23.99.40.0/23" />
     <range network="23.99.42.0/24" />
+    <range network="23.99.45.0/24" />
+    <range network="23.99.46.0/24" />
+    <range network="23.99.47.0/26" />
     <range network="23.99.48.0/20" />
     <range network="65.52.112.0/20" />
     <range network="104.40.0.0/18" />
     <range network="104.40.64.0/19" />
+    <range network="104.42.0.0/18" />
+    <range network="104.42.64.0/20" />
+    <range network="104.209.16.0/23" />
+    <range network="104.209.32.0/19" />
+    <range network="104.210.32.0/19" />
     <range network="168.63.89.0/25" />
     <range network="168.63.89.128/26" />
     <range network="191.236.64.0/18" />
     <range network="191.239.0.0/18" />
+    <range network="104.42.128.0/19" />
+    <range network="104.42.160.0/28" />
+    <range network="104.42.161.0/24" />
   </region>
   <region name="Azure_US_North" description="North Central US (Chicago, IL)">
+    <range network="23.98.54.0/24" />
     <range network="23.100.72.0/21" />
+    <range network="23.100.224.0/20" />
     <range network="65.52.0.0/19" />
     <range network="65.52.48.0/20" />
     <range network="65.52.106.16/28" />
@@ -181,16 +224,20 @@
     <range network="207.46.203.192/27" />
     <range network="207.46.204.0/22" />
     <range network="209.240.220.0/23" />
-    <range network="23.96.128.0/17" />
-    <range network="23.98.48.0/25" />
+    <range network="23.96.128.0/20" />
+    <range network="23.96.160.0/19" />
+    <range network="23.96.192.0/18" />
+    <range network="23.98.48.0/27" />
+    <range network="23.98.48.32/28" />
+    <range network="23.98.48.64/26" />
     <range network="23.98.48.128/27" />
     <range network="23.98.48.160/28" />
-    <range network="23.98.48.192/27" />
-    <range network="23.98.48.224/28" />
+    <range network="23.98.48.192/26" />
     <range network="23.98.49.0/24" />
     <range network="23.98.50.0/23" />
     <range network="23.98.52.0/23" />
     <range network="23.98.55.0/26" />
+    <range network="23.98.55.64/27" />
     <range network="23.101.160.0/20" />
     <range network="191.236.128.0/18" />
   </region>
@@ -249,17 +296,32 @@
     <range network="191.237.208.0/20" />
     <range network="191.238.96.0/19" />
     <range network="191.239.208.0/20" />
+    <range network="104.45.80.0/20" />
+    <range network="104.45.96.0/20" />
+    <range network="104.45.112.0/20" />
+    <range network="104.41.192.0/28" />
+    <range network="104.41.193.0/24" />
+    <range network="104.41.200.0/21" />
+    <range network="104.41.208.0/20" />
+    <range network="104.41.224.0/21" />
   </region>
   <region name="Azure_US_Central" description="Central US (Chicago, IL)">
     <range network="23.100.80.0/21" />
     <range network="23.101.112.0/20" />
     <range network="168.61.128.0/17" />
     <range network="193.149.72.0/21" />
+    <range network="23.100.240.0/20" />
     <range network="23.99.128.0/19" />
     <range network="23.99.160.0/25" />
+    <range network="23.99.160.128/26" />
+    <range network="23.99.160.192/27" />
+    <range network="23.99.160.224/28" />
     <range network="23.99.161.0/24" />
     <range network="23.99.162.0/23" />
+    <range network="23.99.164.0/23" />
     <range network="23.99.192.0/18" />
+    <range network="104.43.128.0/18" />
+    <range network="104.208.0.0/27" />
   </region>
   <region name="Azure_Asia_East" description="East Asia (Hong Kong, China)">
     <range network="23.98.32.0/21" />
@@ -279,6 +341,8 @@
     <range network="207.46.89.16/28" />
     <range network="207.46.95.48/28" />
     <range network="207.46.128.0/19" />
+    <range network="104.46.160.0/20" />
+    <range network="104.46.176.0/20" />
     <range network="23.97.64.0/20" />
     <range network="23.97.80.0/28" />
     <range network="23.98.44.0/24" />
@@ -291,19 +355,15 @@
     <range network="191.234.3.0/24" />
     <range network="191.234.16.0/20" />
     <range network="191.237.238.0/28" />
+    <range network="191.237.238.32/27" />
+    <range network="191.237.238.64/27" />
+    <range network="191.237.238.112/28" />
   </region>
   <region name="Azure_Asia_SouthEast" description="South East Asia (Singapore)">
     <range network="23.97.48.0/20" />
     <range network="23.100.112.0/21" />
     <range network="23.101.16.0/20" />
-    <range network="111.221.16.0/25" />
-    <range network="111.221.16.128/27" />
-    <range network="111.221.16.160/28" />
-    <range network="111.221.16.192/26" />
-    <range network="111.221.17.64/26" />
-    <range network="111.221.17.128/25" />
-    <range network="111.221.18.0/23" />
-    <range network="111.221.20.0/22" />
+    <range network="104.46.128.0/19" />
     <range network="111.221.80.0/20" />
     <range network="111.221.96.0/20" />
     <range network="137.116.128.0/19" />
@@ -311,7 +371,7 @@
     <range network="168.63.160.0/19" />
     <range network="168.63.224.0/19" />
     <range network="207.46.48.0/21" />
-    <range network="207.46.56.0/23" />
+    <range network="207.46.56.0/24" />
     <range network="207.46.58.0/24" />
     <range network="207.46.59.0/26" />
     <range network="207.46.59.128/25" />
@@ -325,10 +385,13 @@
     <range network="168.63.90.0/27" />
     <range network="168.63.90.32/28" />
     <range network="168.63.90.64/27" />
-    <range network="191.238.64.0/25" />
-    <range network="191.238.64.128/27" />
-    <range network="191.238.64.160/28" />
+    <range network="191.238.64.0/24" />
     <range network="207.46.224.0/20" />
+    <range network="104.43.0.0/28" />
+    <range network="104.43.1.0/24" />
+    <range network="104.43.8.0/21" />
+    <range network="104.43.16.0/20" />
+    <range network="104.43.32.0/21" />
   </region>
   <region name="Azure_US_South" description="South Central US (San Antonio, TX)">
     <range network="65.52.32.0/21" />
@@ -337,8 +400,6 @@
     <range network="65.54.52.64/27" />
     <range network="65.54.52.128/25" />
     <range network="65.54.53.0/24" />
-    <range network="65.54.54.0/23" />
-    <range network="65.55.64.0/20" />
     <range network="65.55.80.0/21" />
     <range network="65.55.88.0/22" />
     <range network="65.55.92.0/23" />
@@ -370,7 +431,11 @@
     <range network="157.55.200.0/22" />
     <range network="168.62.128.0/19" />
     <range network="23.98.128.0/19" />
-    <range network="23.98.160.0/23" />
+    <range network="23.98.160.0/27" />
+    <range network="23.98.160.48/28" />
+    <range network="23.98.160.64/26" />
+    <range network="23.98.160.128/25" />
+    <range network="23.98.161.0/24" />
     <range network="23.98.162.0/28" />
     <range network="23.98.162.32/28" />
     <range network="23.98.162.64/26" />
@@ -380,6 +445,11 @@
     <range network="23.98.164.0/23" />
     <range network="23.98.167.0/24" />
     <range network="23.98.169.0/24" />
+    <range network="23.98.170.0/28" />
+    <range network="23.98.170.32/27" />
+    <range network="23.98.171.0/24" />
+    <range network="23.98.173.0/24" />
+    <range network="23.98.174.0/24" />
     <range network="23.98.176.0/20" />
     <range network="23.98.192.0/25" />
     <range network="23.98.208.0/20" />
@@ -387,10 +457,13 @@
     <range network="23.98.255.32/28" />
     <range network="23.98.255.64/26" />
     <range network="23.100.120.0/21" />
+    <range network="23.100.192.0/19" />
     <range network="23.101.176.0/20" />
     <range network="23.102.128.0/18" />
-    <range network="191.238.128.0/19" />
-    <range network="191.238.160.0/20" />
+    <range network="104.44.128.0/19" />
+    <range network="104.47.208.0/24" />
+    <range network="104.210.128.0/19" />
+    <range network="191.238.128.0/18" />
     <range network="191.238.224.0/19" />
   </region>
   <region name="Azure_Japan_West" description="Japan West">
@@ -403,8 +476,10 @@
     <range network="191.233.32.0/19" />
     <range network="191.237.236.0/24" />
     <range network="191.238.80.0/20" />
-    <range network="191.238.68.0/27" />
-    <range network="191.238.68.32/28" />
+    <range network="104.46.224.0/20" />
+    <range network="191.238.68.0/26" />
+    <range network="191.238.69.0/24" />
+    <range network="191.239.96.0/19" />
   </region>
   <region name="Azure_Japan_East" description="Japan East">
     <range network="23.98.57.0/25" />
@@ -412,8 +487,12 @@
     <range network="23.100.96.0/21" />
     <range network="138.91.0.0/20" />
     <range network="191.234.138.0/24" />
+    <range network="104.46.208.0/20" />
     <range network="23.102.64.0/20" />
+    <range network="23.102.80.0/24" />
+    <range network="104.41.160.0/19" />
     <range network="191.237.240.0/26" />
+    <range network="191.237.240.64/28" />
     <range network="191.237.241.0/24" />
   </region>
   <region name="Azure_Brazil_South" description="Brazil South">
@@ -421,8 +500,32 @@
     <range network="23.97.112.0/25" />
     <range network="23.97.112.128/28" />
     <range network="104.41.0.0/20" />
-    <range network="104.41.16.0/28" />
+    <range network="104.41.16.0/27" />
     <range network="104.41.17.0/24" />
+    <range network="104.41.18.0/24" />
+    <range network="104.41.32.0/20" />
     <range network="191.237.248.0/21" />
+  </region>
+  <region name="Azure_Australia_East" description="Australia East">
+    <range network="23.101.208.0/20" />
+    <range network="104.46.29.0/24" />
+    <range network="104.46.30.0/24" />
+    <range network="104.46.240.0/20" />
+    <range network="104.209.80.0/20" />
+    <range network="104.210.64.0/19" />
+    <range network="191.238.66.0/25" />
+    <range network="191.238.66.128/27" />
+    <range network="191.238.66.160/28" />
+    <range network="191.238.67.0/24" />
+    <range network="191.239.64.0/19" />
+  </region>
+  <region name="Azure_Australia_SouthEast" description="Australia South East">
+    <range network="23.101.224.0/19" />
+    <range network="104.46.28.0/24" />
+    <range network="104.209.64.0/20" />
+    <range network="191.239.160.0/19" />
+    <range network="191.239.192.0/25" />
+    <range network="191.239.192.128/27" />
+    <range network="191.239.193.0/24" />
   </region>
 </group>
