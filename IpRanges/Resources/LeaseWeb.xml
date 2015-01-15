@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<!-- last update: May 27, 2014 -->
+<!-- last update: Jan 15, 2015 -->
 <group name="LeaseWeb">
   <!-- source: http://bgp.he.net/AS16265#_prefixes -->
   <region id="LeaseWeb_Netherlands" description="Netherlands">
@@ -11,6 +11,7 @@
     <range network="62.212.64.0/19" />
     <range network="82.192.64.0/19" />
     <range network="83.149.64.0/18" />
+    <range network="85.17.0.0/16" />
     <range network="94.75.192.0/18" />
     <range network="95.211.0.0/16" />
     <range network="185.17.184.0/22" />
@@ -21,9 +22,15 @@
   <region id="LeaseWeb_Germany" description="Germany">
     <range network="37.58.48.0/20" />
     <range network="46.165.192.0/18" />
+    <range network="78.159.96.0/19" />
+    <range network="89.149.192.0/18" />
     <range network="91.109.16.0/20" />
+    <range network="95.168.160.0/19" />
     <range network="178.162.128.0/17" />
     <range network="185.17.144.0/22" />
+    <range network="188.72.192.0/18" />
+    <range network="212.95.32.0/19" />
+    <range network="217.20.112.0/20" />
     <range network="217.20.124.0/23" />
   </region>
 </group>

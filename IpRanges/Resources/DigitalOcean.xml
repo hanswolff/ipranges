@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<!-- last update: Aug 25, 2014 -->
+<!-- last update: Jan 15, 2015 -->
 <group name="DigitalOcean">
   <!-- source: http://whois.arin.net/rest/org/DO-13/nets -->
   <region id="DigitalOcean_USA" description="New York/San Francisco">
@@ -21,18 +21,54 @@
     <range network="107.170.0.0/16" from="107.170.0.0" to="107.170.255.255" />
     <!-- DIGITALOCEAN-9 -->
     <range network="104.131.0.0/16" from="104.131.0.0" to="104.131.255.255" />
+    <!-- DIGITALOCEAN-10 -->
+    <range network="104.236.0.0/16" from="104.236.0.0" to="104.236.255.255" />
     <!-- DIGITALOCEAN-V6-1 -->
     <range network="2604:A880::/32" from="2604:A880::" to="2604:A880:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF" />
   </region>
   <!-- source: https://apps.db.ripe.net/search/ -->
-  <region id="DigitalOcean_Europe" description="Amsterdam">
+  <region id="DigitalOcean_Amsterdam" description="Amsterdam">
     <!-- DIGITALOCEAN-AMS-1 -->
     <range from="185.14.184.0" to="185.14.186.255" />
     <!-- DIGITALOCEAN-AMS-2 -->
     <range from="185.14.187.0" to="185.14.187.255" />
+    <!-- DIGITALOCEAN-AMS-3 -->
+    <range from="5.101.96.0" to="5.101.111.255" />
+    <range from="37.139.0.0" to="37.139.31.255" />
+    <range from="82.196.0.0" to="82.196.15.255" />
+    <range from="146.185.128.0" to="146.185.191.255" />
     <!-- DIGITALOCEAN-AMS-4 -->
-    <range from="82.196.0.0" to="82.196.7.255" />
+    <range from="95.85.0.0" to="82.196.63.255" />
+    <range from="188.226.128.0" to="188.226.255.255" />
     <!-- DIGITALOCEAN-AMS-5 -->
-    <range from="82.196.8.0" to="82.196.15.255" />
+    <range from="178.62.128.0" to="178.62.255.255" />
+    <!-- EU-DIGITALOCEAN-20081015 -->
+    <range from="80.240.128.0" to="80.240.143.255" />
+    <!-- EU-DIGITALOCEAN-20081229 -->
+    <range from="95.85.0.0" to="95.85.63.255" />
+    <!-- EU-DIGITALOCEAN-20090709 -->
+    <range from="188.226.128.0" to="188.255.128.0" />
+    <!-- EU-DIGITALOCEAN-20100226 -->
+    <range from="178.62.0.0" to="178.62.127.255" />
+    <!-- EU-DIGITALOCEAN-20100605 -->
+    <range from="188.166.0.0" to="188.166.255.255" />
+    <!-- EU-DIGITALOCEAN-20130103 -->
+    <range from="185.14.184.0" to="185.14.187.255" />
+
+    <range network="2a03:b0c0::/48" />
+  </region>
+  <!-- source: http://bgp.he.net/search?search%5Bsearch%5D=EU-DIGITALOCEAN&commit=Search -->
+  <region id="DigitalOcean_London" description="London">
+    <range network="128.199.32.0/19" />
+    <range network="128.199.64.0/18" />
+    <range network="128.199.128.0/18" />
+    <range network="128.199.160.0/19" />
+    <range network="128.199.192.0/18" />
+    <range network="128.199.224.0/19" />
+    <range network="178.62.0.0/18" />
+    <range network="178.62.32.0/19" />
+    <range network="178.62.64.0/18" />
+    <range network="178.62.96.0/19" />
+    <range network="2a03:b0c0:0001::/48" />
   </region>
 </group>

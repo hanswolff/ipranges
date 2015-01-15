@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<!-- last update: May 27, 2014 -->
+<!-- last update: Jan 15, 2015 -->
 <group name="OVH">
   <!-- source: https://apps.db.ripe.net/search/ -->
   <!-- source: http://bgp.he.net/AS16276#_prefixes -->
   <!-- multiple successive ranges condensed to larger single ranges -->
+  <!-- this list is definately not complete :-( -->
   <region id="OVH_EU_France" description="France">
     <range from="5.39.0.0" to="5.39.127.255" />
     <range from="5.135.0.0" to="5.39.255.255" />
@@ -20,14 +21,15 @@
     <range from="109.190.184.0" to="109.190.191.255" />
     <range from="109.190.192.0" to="109.190.255.255" />
     <range from="142.4.192.0" to="142.4.223.255" />
+    <range network="151.80.0.0/17" />
     <range network="176.31.0.0/16" />
     <range network="178.32.0.0/15" />
     <range network="188.165.0.0/16" />
     <range network="213.186.32.0/19" />
     <range from="213.186.50.96" to="213.186.50.111" />
     <range from="213.186.56.0" to="213.186.62.255" />
-    <range network="213.251.128.0/18" />
     <range from="213.251.160.0" to="213.251.191.255" />
+    <range network="213.251.128.0/18" />
     <range network="2001:41D0::/40" />
   </region>
   <region id="OVH_US_USA" description="USA">
