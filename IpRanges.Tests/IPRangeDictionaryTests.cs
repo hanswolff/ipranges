@@ -116,6 +116,7 @@ namespace IpRanges.Tests
             Assert.Equal(false, new IPRangeDictionary<object>().Contains(IPAddress.Any));
         }
 
+        [Theory]
         [InlineData("0.0.0.0")]
         [InlineData("192.168.1.1")]
         [InlineData("192.168.1.255")]
@@ -141,6 +142,7 @@ namespace IpRanges.Tests
             Assert.Equal(false, dict.Contains(IPAddress.Parse(ipAddress)));
         }
 
+        [Theory]
         [InlineData("192.168.1.10", "A")]
         [InlineData("192.168.1.11", "A")]
         [InlineData("192.168.1.15", "A")]
@@ -170,6 +172,7 @@ namespace IpRanges.Tests
             Assert.Equal(expected, value);
         }
 
+        [Theory]
         [InlineData("::")]
         [InlineData("fe80:0:0:0:0::1")]
         [InlineData("fe80:0:0:0:ffff::1")]
@@ -195,6 +198,7 @@ namespace IpRanges.Tests
             Assert.Equal(false, dict.Contains(IPAddress.Parse(ipAddress)));
         }
 
+        [Theory]
         [InlineData("fe80:0:0:0:0010::1", "A")]
         [InlineData("fe80:0:0:0:0011::1", "A")]
         [InlineData("fe80:0:0:0:0015::1", "A")]

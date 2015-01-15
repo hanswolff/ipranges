@@ -53,10 +53,9 @@ namespace IpRanges
             return network1.Equals(network2);
         }
 
-        public static IPAddress CreateSubnetMaskIPv4(int cidr)
+        public static IPAddress CreateSubnetMaskIPv4(byte cidr)
         {
-            const int maskLength = 32;
-            if (cidr < 0) throw new ArgumentOutOfRangeException("cidr", cidr, "CIDR network prefix cannot be smaller than 0");
+            const byte maskLength = 32;
             if (cidr > maskLength) throw new ArgumentOutOfRangeException("cidr", cidr, "CIDR network prefix cannot be larger than 32 for IPv4");
 
             var zeroBits = maskLength - cidr;
@@ -66,14 +65,13 @@ namespace IpRanges
             return new IPAddress(BitConverter.GetBytes(result));
         }
 
-        public static IPAddress CreateSubnetMaskIPv6(int cidr)
+        public static IPAddress CreateSubnetMaskIPv6(byte cidr)
         {
-            const int maskLength = 128;
-            if (cidr < 0) throw new ArgumentOutOfRangeException("cidr", cidr, "CIDR network prefix cannot be smaller than 0");
+            const byte maskLength = 128;
             if (cidr > maskLength) throw new ArgumentOutOfRangeException("cidr", cidr, "CIDR network prefix cannot be larger than 128 for IPv6");
 
             var maskBits = new BitArray(maskLength);
-            for (int i = 0; i < maskLength; i++)
+            for (byte i = 0; i < maskLength; i++)
             {
                 var index = (((maskLength - 1) - i) / 8) * 8 + (i % 8);
                 maskBits.Set(index, i >= (maskLength - cidr));

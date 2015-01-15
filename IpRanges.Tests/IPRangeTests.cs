@@ -45,6 +45,34 @@ namespace IpRanges.Tests
             Assert.Throws<ArgumentException>(() => IPRange.Parse("257.2.3.4"));
         }
 
+        [Theory]
+        [InlineData("1.1.1.1", "1.1.1.1", "1.1.1.1", "1.1.1.1")]
+        [InlineData("1.1.1.1", "1.1.1.100", "1.1.1.50", "1.1.1.150")]
+        [InlineData("1.1.1.1", "1.1.1.100", "1.1.1.100", "1.1.1.200")]
+        [InlineData("1.1.1.1", "1.1.1.100", "1.1.1.50", "1.1.1.60")]
+        [InlineData("1.1.1.50", "1.1.1.150", "1.1.1.1", "1.1.1.100")]
+        [InlineData("1.1.1.100", "1.1.1.200", "1.1.1.1", "1.1.1.100")]
+        [InlineData("1.1.1.50", "1.1.1.60", "1.1.1.1", "1.1.1.100")]
+        public void Overlaps_true(string from1, string to1, string from2, string to2)
+        {
+            var ipRange1 = new IPRange(IPAddress.Parse(from1), IPAddress.Parse(to1));
+            var ipRange2 = new IPRange(IPAddress.Parse(from2), IPAddress.Parse(to2));
+
+            Assert.Equal(true, ipRange1.Overlaps(ipRange2));
+        }
+
+        [Theory]
+        [InlineData("1.1.1.1", "1.1.1.100", "1.1.1.101", "1.1.1.200")]
+        [InlineData("1.1.1.101", "1.1.1.200", "1.1.1.1", "1.1.1.100")]
+        public void Overlaps_false(string from1, string to1, string from2, string to2)
+        {
+            var ipRange1 = new IPRange(IPAddress.Parse(from1), IPAddress.Parse(to1));
+            var ipRange2 = new IPRange(IPAddress.Parse(from2), IPAddress.Parse(to2));
+
+            Assert.Equal(false, ipRange1.Overlaps(ipRange2));
+        }
+
+        [Theory]
         [InlineData("192.168.1.1", "192.168.1.1", "192.168.1.1")]
         [InlineData("192.168.1.1/32", "192.168.1.1", "192.168.1.1")]
         [InlineData("192.168.1.1/31", "192.168.1.0", "192.168.1.1")]
@@ -58,8 +86,9 @@ namespace IpRanges.Tests
             Assert.Equal(toIp, range.To);
         }
 
-        [InlineData("192.168.1.1", "192.168.1.1", "192.168.1.0/32")]
-        [InlineData("192.168.1.0", "192.168.1.1", "192.168.1.1/31")]
+        [Theory]
+        [InlineData("192.168.1.1", "192.168.1.1", "192.168.1.1/32")]
+        [InlineData("192.168.1.0", "192.168.1.1", "192.168.1.0/31")]
         [InlineData("192.168.1.0", "192.168.1.255", "192.168.1.0/24")]
         [InlineData("46.51.216.0", "46.51.223.255", "46.51.216.0/21")]
         [InlineData("2604:A880::", "2604:A880:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF", "2604:A880::/32")]
@@ -68,9 +97,10 @@ namespace IpRanges.Tests
             var fromIp = IPAddress.Parse(from);
             var toIp = IPAddress.Parse(to);
             var network = new IPRange(fromIp, toIp).GetNetwork();
-            Assert.Equal(expectedNetwork, network);
+            Assert.Equal(expectedNetwork, network.ToUpperInvariant());
         }
 
+        [Theory]
         [InlineData("127.0.0.1", 1)]
         [InlineData("127.0.0.1/32", 1)]
         [InlineData("127.0.0.1/31", 2)]
@@ -81,6 +111,7 @@ namespace IpRanges.Tests
             Assert.Equal((ulong)count, IPRange.Parse(network).Count);
         }
 
+        [Theory]
         [InlineData("127.0.0.1", 1)]
         [InlineData("127.0.0.1/24", 256)]
         public void BigCount(string network, long count)

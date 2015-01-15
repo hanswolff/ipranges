@@ -127,8 +127,8 @@ namespace IpRanges
                 return false;
             }
 
-            int cidr;
-            if (!Int32.TryParse(network.Substring(pos + 1), out cidr))
+            byte cidr;
+            if (!Byte.TryParse(network.Substring(pos + 1), out cidr))
             {
                 exception = new ArgumentException("Cannot parse CIDR part of IP address", "network");
                 return false;
@@ -153,11 +153,36 @@ namespace IpRanges
         }
 
         private static readonly IPAddressComparer IpAddressComparer = new IPAddressComparer();
-        public bool Equals(IPRange other)
+
+        /// <summary>
+        /// Checks if current IP range overlaps with other IP range
+        /// </summary>
+        /// <param name="otherRange">other range to check against</param>
+        /// <returns>true, of ranges overlap</returns>
+        public bool Overlaps(IPRange otherRange)
         {
-            if (other == null) return false;
-            return (IpAddressComparer.Compare(From, other.From) == 0) &&
-                   (IpAddressComparer.Compare(To, other.To)) == 0;
+            if (otherRange == null) throw new ArgumentNullException("otherRange");
+
+            if (IpAddressComparer.Compare(From, otherRange.From) >= 0 && 
+                IpAddressComparer.Compare(From, otherRange.To) <= 0)
+                return true;
+
+            if (IpAddressComparer.Compare(To, otherRange.From) >= 0 &&
+                IpAddressComparer.Compare(To, otherRange.To) <= 0)
+                return true;
+
+            if (IpAddressComparer.Compare(otherRange.From, From) >= 0 &&
+                IpAddressComparer.Compare(otherRange.From, To) <= 0)
+                return true;
+
+            return false;
+        }
+
+        public bool Equals(IPRange otherRange)
+        {
+            if (otherRange == null) return false;
+            return (IpAddressComparer.Compare(From, otherRange.From) == 0) &&
+                   (IpAddressComparer.Compare(To, otherRange.To)) == 0;
         }
 
         public override bool Equals(object obj)
